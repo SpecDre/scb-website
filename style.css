@@ -280,7 +280,7 @@ footer.site p{color:#98a0ac;font-size:.92rem}
    To turn it off, remove class="glass" from index.html's <body>.
    ============================================================ */
 
-body.glass{background:var(--ink)}
+body.glass{background:var(--ink);position:relative}
 
 /* the fixed video layer that sits behind everything */
 .bgvideo{
@@ -301,8 +301,13 @@ body.glass{background:var(--ink)}
 body.glass .hero{
   background:transparent;min-height:clamp(520px,86vh,860px);
 }
-body.glass .hero video,
-body.glass .hero .scrim{display:none}
+/* On desktop the hero shows the fixed background video through it, so its own
+   video and scrim are hidden. Scoped to >760px so phones (which have no fixed
+   background video) can still play the hero clip. */
+@media(min-width:761px){
+  body.glass .hero video,
+  body.glass .hero .scrim{display:none}
+}
 
 /* every scrolling section becomes a translucent dark panel */
 body.glass section,
@@ -404,19 +409,45 @@ body.glass footer.site a{color:#cdd3db}
 
 /* Phones: fixed-position video is unreliable on iOS and eats battery.
    Fall back to a static dark background and hide the video entirely. */
+/* PHONES
+   position:fixed video is unreliable on iOS (Safari pauses it, and it costs
+   battery), so on small screens the background video becomes absolute instead
+   of fixed — it sits at the top of the page and scrolls away rather than
+   staying pinned. Panels below it fall back to solid dark so text stays
+   readable once the video has scrolled past. */
 @media(max-width:760px){
-  .bgvideo{display:none}
   body.glass{background:var(--ink)}
+  .bgvideo{
+    position:absolute;top:0;left:0;right:0;
+    height:70vh;                /* covers the hero area, then scrolls away */
+    bottom:auto;
+  }
+  .bgvideo::after{
+    background:linear-gradient(180deg,rgba(10,12,16,.5) 0%,rgba(10,12,16,.65) 70%,rgba(16,19,25,1) 100%);
+  }
+  /* below the video, panels go solid — nothing to see through to */
   body.glass section,
   body.glass .proof,
   body.glass footer.site,
-  body.glass .nav{backdrop-filter:none;-webkit-backdrop-filter:none}
-  body.glass .hero{
-    min-height:clamp(440px,72vh,640px);
-    background:var(--slab);
+  body.glass .nav{
+    backdrop-filter:none;-webkit-backdrop-filter:none;
+    background:rgba(16,19,25,.94);
   }
-  body.glass .hero video{display:block}
-  body.glass .hero .scrim{display:block}
+  body.glass .cta{background:rgba(200,60,8,.96)}
+  body.glass .sec-dust,
+  body.glass .sec-ink{background:rgba(16,19,25,.94)}
+  body.glass .svc article,
+  body.glass .projects .card{
+    background:rgba(22,26,34,.96);backdrop-filter:none;-webkit-backdrop-filter:none;
+  }
+  body.glass .hero{
+    min-height:clamp(440px,66vh,600px);
+    background:transparent;
+  }
+  /* the hero's own video stays hidden on mobile too — the absolute background
+     video above is doing the work */
+  body.glass .hero video,
+  body.glass .hero .scrim{display:none}
 }
 
 /* Respect reduced-motion: stop the background video from autoplaying */
