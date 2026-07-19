@@ -331,13 +331,13 @@ body.glass .sec-ink{background:rgba(16,19,25,.42)}
    over whatever frame of video is behind it. */
 body.glass h1,body.glass h2,body.glass h3,body.glass h4,
 body.glass p,body.glass li,body.glass summary,body.glass .n,body.glass .l{
-  text-shadow:0 1px 3px rgba(0,0,0,.55);
+  text-shadow:0 1px 4px rgba(0,0,0,.7);
 }
 
 /* headings and body copy on glass */
 body.glass h2,body.glass h3,body.glass h4{color:#fff}
-body.glass .sec-head p{color:#b7bec9}
-body.glass .why p{color:#b7bec9}
+body.glass .sec-head p{color:#dde2e8}
+body.glass .why p{color:#dde2e8}
 
 /* nav and top bar go translucent too */
 body.glass .nav{
@@ -347,8 +347,8 @@ body.glass .nav{
   border-bottom:1px solid rgba(255,255,255,.1);
 }
 body.glass .nav .brand .name{color:#fff}
-body.glass .nav .brand .name span{color:#9aa2ae}
-body.glass .navlinks a{color:#e6e9ee}
+body.glass .nav .brand .name span{color:#c3cad3}
+body.glass .navlinks a{color:#f0f2f5}
 body.glass .navtoggle{color:#fff;border-color:rgba(255,255,255,.25)}
 @media(max-width:960px){
   body.glass .navlinks{background:rgba(14,16,21,.96)}
@@ -360,8 +360,8 @@ body.glass .topbar{background:rgba(10,12,16,.86);backdrop-filter:blur(12px)}
 body.glass .svc{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.12)}
 body.glass .svc article{background:rgba(18,22,29,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 body.glass .svc h3{color:#fff}
-body.glass .svc p{color:#aeb6c2}
-body.glass .svc li{color:#dfe3e9;border-top-color:rgba(255,255,255,.08)}
+body.glass .svc p{color:#d7dce3}
+body.glass .svc li{color:#eaedf1;border-top-color:rgba(255,255,255,.08)}
 
 /* project cards */
 body.glass .projects .card{
@@ -371,30 +371,30 @@ body.glass .projects .card{
   -webkit-backdrop-filter:blur(8px);
 }
 body.glass .projects .meta strong{color:#fff}
-body.glass .projects .meta span{color:#aeb6c2}
+body.glass .projects .meta span{color:#d7dce3}
 body.glass .projects .shot{background:rgba(255,255,255,.05)}
 
 /* chips */
 body.glass .chips span{
-  border-color:rgba(255,255,255,.2);color:#cdd3db;background:rgba(255,255,255,.05);
+  border-color:rgba(255,255,255,.28);color:#e2e6ec;background:rgba(255,255,255,.08);
 }
 
 /* FAQ */
 body.glass .faq details{border-top-color:rgba(255,255,255,.14)}
 body.glass .faq details:last-child{border-bottom-color:rgba(255,255,255,.14)}
 body.glass .faq summary{color:#fff}
-body.glass .faq details p{color:#b7bec9}
+body.glass .faq details p{color:#dde2e8}
 
 /* buttons that assumed a light background */
 body.glass .btn-dark{border-color:rgba(255,255,255,.45);color:#fff}
 body.glass .btn-dark:hover{background:#fff;color:var(--ink)}
 
 /* proof strip loses its solid fill — it's a panel now */
-body.glass .proof .l{color:#98a1ae}
+body.glass .proof .l{color:#c3cad3}
 
 /* footer */
-body.glass footer.site p{color:#9aa2ae}
-body.glass footer.site a{color:#cdd3db}
+body.glass footer.site p{color:#c3cad3}
+body.glass footer.site a{color:#dde2e8}
 
 /* Safari and older browsers with no backdrop-filter get solid panels
    instead of see-through ones, so text never sits on raw video. */
@@ -470,7 +470,7 @@ body.glass form{
   -webkit-backdrop-filter:blur(10px);
   border-color:rgba(255,255,255,.14);
 }
-body.glass label{color:#a8b0bc}
+body.glass label{color:#c3cad3}
 body.glass input,
 body.glass select,
 body.glass textarea{
@@ -479,12 +479,12 @@ body.glass textarea{
   color:#fff;
 }
 body.glass input::placeholder,
-body.glass textarea::placeholder{color:#7d8794}
+body.glass textarea::placeholder{color:#9aa3b0}
 body.glass select option{background:#151920;color:#fff}
-body.glass .formnote{color:#a8b0bc}
+body.glass .formnote{color:#c9d0d8}
 
 /* contact info blocks */
-body.glass .infoblock .val{color:#e4e8ee}
+body.glass .infoblock .val{color:#eef1f4}
 body.glass .infoblock .val a{border-bottom-color:rgba(255,255,255,.25)}
 body.glass .bigphone{color:#fff}
 body.glass .bigphone:hover{color:var(--cut)}
@@ -497,7 +497,7 @@ body.glass .mapblock{
   border-color:rgba(255,255,255,.14);
 }
 body.glass .mapaddr{color:#fff}
-body.glass .maphours{color:#a8b0bc}
+body.glass .maphours{color:#c9d0d8}
 
 /* testimonial blockquotes, if that section is ever turned on */
 body.glass .quotes blockquote{
@@ -505,7 +505,7 @@ body.glass .quotes blockquote{
   backdrop-filter:blur(10px);
   border-color:rgba(255,255,255,.14);
 }
-body.glass .quotes p{color:#e4e8ee}
+body.glass .quotes p{color:#eef1f4}
 body.glass .quotes footer{
   color:#a8b0bc;border-top-color:rgba(255,255,255,.12);
 }
@@ -525,3 +525,11 @@ body.glass .quotes footer b{color:#fff}
   body.glass form,
   body.glass .mapblock{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(20,24,31,.94)}
 }
+
+
+/* ---------- MUTED TEXT ----------
+   Use class="muted" for secondary copy instead of an inline color, so it can
+   adapt between the light and glass themes. */
+.muted{color:var(--steel)}
+body.glass .muted{color:#d7dce3}
+body.glass .muted a{color:#fff}
