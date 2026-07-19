@@ -294,7 +294,7 @@ body.glass{background:var(--ink)}
 /* darkening layer so text stays readable over any frame */
 .bgvideo::after{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(10,12,16,.72) 0%,rgba(10,12,16,.82) 40%,rgba(10,12,16,.9) 100%);
+  background:linear-gradient(180deg,rgba(10,12,16,.55) 0%,rgba(10,12,16,.45) 45%,rgba(10,12,16,.5) 100%);
 }
 
 /* hero sits directly on the video — no panel, no background */
@@ -309,9 +309,9 @@ body.glass section,
 body.glass .proof,
 body.glass .cta,
 body.glass footer.site{
-  background:rgba(16,19,25,.72);
-  backdrop-filter:blur(18px) saturate(120%);
-  -webkit-backdrop-filter:blur(18px) saturate(120%);
+  background:rgba(16,19,25,.42);
+  backdrop-filter:blur(10px) saturate(115%);
+  -webkit-backdrop-filter:blur(10px) saturate(115%);
   border-top:1px solid rgba(255,255,255,.08);
   color:#fff;
 }
@@ -320,7 +320,14 @@ body.glass .cta{
   border-top:1px solid rgba(255,255,255,.16);
 }
 body.glass .sec-dust,
-body.glass .sec-ink{background:rgba(16,19,25,.72)}
+body.glass .sec-ink{background:rgba(16,19,25,.42)}
+
+/* Panels are translucent, so text gets a soft shadow to stay readable
+   over whatever frame of video is behind it. */
+body.glass h1,body.glass h2,body.glass h3,body.glass h4,
+body.glass p,body.glass li,body.glass summary,body.glass .n,body.glass .l{
+  text-shadow:0 1px 3px rgba(0,0,0,.55);
+}
 
 /* headings and body copy on glass */
 body.glass h2,body.glass h3,body.glass h4{color:#fff}
@@ -346,16 +353,17 @@ body.glass .topbar{background:rgba(10,12,16,.86);backdrop-filter:blur(12px)}
 
 /* service cards — glass tiles instead of solid white */
 body.glass .svc{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.12)}
-body.glass .svc article{background:rgba(20,24,31,.66);backdrop-filter:blur(10px)}
+body.glass .svc article{background:rgba(18,22,29,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 body.glass .svc h3{color:#fff}
 body.glass .svc p{color:#aeb6c2}
 body.glass .svc li{color:#dfe3e9;border-top-color:rgba(255,255,255,.08)}
 
 /* project cards */
 body.glass .projects .card{
-  background:rgba(20,24,31,.7);
-  border-color:rgba(255,255,255,.12);
-  backdrop-filter:blur(10px);
+  background:rgba(18,22,29,.6);
+  border-color:rgba(255,255,255,.14);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
 }
 body.glass .projects .meta strong{color:#fff}
 body.glass .projects .meta span{color:#aeb6c2}
@@ -426,9 +434,9 @@ body.glass .pagehero::after{display:none}
 
 /* forms become glass panels */
 body.glass form{
-  background:rgba(20,24,31,.72);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
+  background:rgba(18,22,29,.62);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
   border-color:rgba(255,255,255,.14);
 }
 body.glass label{color:#a8b0bc}
@@ -452,9 +460,9 @@ body.glass .bigphone:hover{color:var(--cut)}
 
 /* map block */
 body.glass .mapblock{
-  background:rgba(20,24,31,.72);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
+  background:rgba(18,22,29,.62);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
   border-color:rgba(255,255,255,.14);
 }
 body.glass .mapaddr{color:#fff}
@@ -462,8 +470,8 @@ body.glass .maphours{color:#a8b0bc}
 
 /* testimonial blockquotes, if that section is ever turned on */
 body.glass .quotes blockquote{
-  background:rgba(20,24,31,.72);
-  backdrop-filter:blur(12px);
+  background:rgba(18,22,29,.62);
+  backdrop-filter:blur(10px);
   border-color:rgba(255,255,255,.14);
 }
 body.glass .quotes p{color:#e4e8ee}
