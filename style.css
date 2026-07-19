@@ -272,3 +272,217 @@ footer.site p{color:#98a0ac;font-size:.92rem}
 .maphours{margin-top:14px;color:var(--steel);font-size:.94rem;line-height:1.7}
 .maprow{display:flex;gap:12px;margin-top:26px;justify-content:center;flex-wrap:wrap}
 .maprow .btn{font-size:.95rem;padding:12px 22px}
+
+
+/* ============================================================
+   GLASS MODE — fixed background video, content scrolls over it
+   Applied only to the home page via <body class="glass">.
+   To turn it off, remove class="glass" from index.html's <body>.
+   ============================================================ */
+
+body.glass{background:var(--ink)}
+
+/* the fixed video layer that sits behind everything */
+.bgvideo{
+  position:fixed;inset:0;z-index:-2;
+  width:100%;height:100%;overflow:hidden;
+}
+.bgvideo video{
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+}
+/* darkening layer so text stays readable over any frame */
+.bgvideo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,12,16,.72) 0%,rgba(10,12,16,.82) 40%,rgba(10,12,16,.9) 100%);
+}
+
+/* hero sits directly on the video — no panel, no background */
+body.glass .hero{
+  background:transparent;min-height:clamp(520px,86vh,860px);
+}
+body.glass .hero video,
+body.glass .hero .scrim{display:none}
+
+/* every scrolling section becomes a translucent dark panel */
+body.glass section,
+body.glass .proof,
+body.glass .cta,
+body.glass footer.site{
+  background:rgba(16,19,25,.72);
+  backdrop-filter:blur(18px) saturate(120%);
+  -webkit-backdrop-filter:blur(18px) saturate(120%);
+  border-top:1px solid rgba(255,255,255,.08);
+  color:#fff;
+}
+body.glass .cta{
+  background:rgba(200,60,8,.82);
+  border-top:1px solid rgba(255,255,255,.16);
+}
+body.glass .sec-dust,
+body.glass .sec-ink{background:rgba(16,19,25,.72)}
+
+/* headings and body copy on glass */
+body.glass h2,body.glass h3,body.glass h4{color:#fff}
+body.glass .sec-head p{color:#b7bec9}
+body.glass .why p{color:#b7bec9}
+
+/* nav and top bar go translucent too */
+body.glass .nav{
+  background:rgba(14,16,21,.82);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+body.glass .nav .brand .name{color:#fff}
+body.glass .nav .brand .name span{color:#9aa2ae}
+body.glass .navlinks a{color:#e6e9ee}
+body.glass .navtoggle{color:#fff;border-color:rgba(255,255,255,.25)}
+@media(max-width:960px){
+  body.glass .navlinks{background:rgba(14,16,21,.96)}
+  body.glass .navlinks a{border-bottom-color:rgba(255,255,255,.1)}
+}
+body.glass .topbar{background:rgba(10,12,16,.86);backdrop-filter:blur(12px)}
+
+/* service cards — glass tiles instead of solid white */
+body.glass .svc{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.12)}
+body.glass .svc article{background:rgba(20,24,31,.66);backdrop-filter:blur(10px)}
+body.glass .svc h3{color:#fff}
+body.glass .svc p{color:#aeb6c2}
+body.glass .svc li{color:#dfe3e9;border-top-color:rgba(255,255,255,.08)}
+
+/* project cards */
+body.glass .projects .card{
+  background:rgba(20,24,31,.7);
+  border-color:rgba(255,255,255,.12);
+  backdrop-filter:blur(10px);
+}
+body.glass .projects .meta strong{color:#fff}
+body.glass .projects .meta span{color:#aeb6c2}
+body.glass .projects .shot{background:rgba(255,255,255,.05)}
+
+/* chips */
+body.glass .chips span{
+  border-color:rgba(255,255,255,.2);color:#cdd3db;background:rgba(255,255,255,.05);
+}
+
+/* FAQ */
+body.glass .faq details{border-top-color:rgba(255,255,255,.14)}
+body.glass .faq details:last-child{border-bottom-color:rgba(255,255,255,.14)}
+body.glass .faq summary{color:#fff}
+body.glass .faq details p{color:#b7bec9}
+
+/* buttons that assumed a light background */
+body.glass .btn-dark{border-color:rgba(255,255,255,.45);color:#fff}
+body.glass .btn-dark:hover{background:#fff;color:var(--ink)}
+
+/* proof strip loses its solid fill — it's a panel now */
+body.glass .proof .l{color:#98a1ae}
+
+/* footer */
+body.glass footer.site p{color:#9aa2ae}
+body.glass footer.site a{color:#cdd3db}
+
+/* Safari and older browsers with no backdrop-filter get solid panels
+   instead of see-through ones, so text never sits on raw video. */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  body.glass section,
+  body.glass .proof,
+  body.glass footer.site,
+  body.glass .nav{background:rgba(16,19,25,.96)}
+  body.glass .svc article,
+  body.glass .projects .card{background:rgba(20,24,31,.96)}
+}
+
+/* Phones: fixed-position video is unreliable on iOS and eats battery.
+   Fall back to a static dark background and hide the video entirely. */
+@media(max-width:760px){
+  .bgvideo{display:none}
+  body.glass{background:var(--ink)}
+  body.glass section,
+  body.glass .proof,
+  body.glass footer.site,
+  body.glass .nav{backdrop-filter:none;-webkit-backdrop-filter:none}
+  body.glass .hero{
+    min-height:clamp(440px,72vh,640px);
+    background:var(--slab);
+  }
+  body.glass .hero video{display:block}
+  body.glass .hero .scrim{display:block}
+}
+
+/* Respect reduced-motion: stop the background video from autoplaying */
+@media (prefers-reduced-motion:reduce){
+  .bgvideo video{display:none}
+  .bgvideo{background:var(--slab)}
+}
+
+
+/* ---------- GLASS: inner-page elements ---------- */
+
+/* inner page hero sits on the video like the home hero does */
+body.glass .pagehero{background:transparent}
+body.glass .pagehero::after{display:none}
+
+/* forms become glass panels */
+body.glass form{
+  background:rgba(20,24,31,.72);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-color:rgba(255,255,255,.14);
+}
+body.glass label{color:#a8b0bc}
+body.glass input,
+body.glass select,
+body.glass textarea{
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.18);
+  color:#fff;
+}
+body.glass input::placeholder,
+body.glass textarea::placeholder{color:#7d8794}
+body.glass select option{background:#151920;color:#fff}
+body.glass .formnote{color:#a8b0bc}
+
+/* contact info blocks */
+body.glass .infoblock .val{color:#e4e8ee}
+body.glass .infoblock .val a{border-bottom-color:rgba(255,255,255,.25)}
+body.glass .bigphone{color:#fff}
+body.glass .bigphone:hover{color:var(--cut)}
+
+/* map block */
+body.glass .mapblock{
+  background:rgba(20,24,31,.72);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-color:rgba(255,255,255,.14);
+}
+body.glass .mapaddr{color:#fff}
+body.glass .maphours{color:#a8b0bc}
+
+/* testimonial blockquotes, if that section is ever turned on */
+body.glass .quotes blockquote{
+  background:rgba(20,24,31,.72);
+  backdrop-filter:blur(12px);
+  border-color:rgba(255,255,255,.14);
+}
+body.glass .quotes p{color:#e4e8ee}
+body.glass .quotes footer{
+  color:#a8b0bc;border-top-color:rgba(255,255,255,.12);
+}
+body.glass .quotes footer b{color:#fff}
+
+/* no-backdrop-filter fallback for the new pieces */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  body.glass form,
+  body.glass .mapblock,
+  body.glass .quotes blockquote{background:rgba(20,24,31,.96)}
+}
+
+/* phones: no fixed video on inner pages either */
+@media(max-width:760px){
+  body.glass .pagehero{background:var(--slab)}
+  body.glass .pagehero::after{display:block}
+  body.glass form,
+  body.glass .mapblock{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(20,24,31,.94)}
+}

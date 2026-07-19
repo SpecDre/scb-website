@@ -68,6 +68,23 @@ Full list in `READ-ME-FIRST.md`.
 
 ---
 
+## Background video
+
+Every page has a fixed video behind it (`<div class="bgvideo">` near the top of
+each file) with the content scrolling over translucent dark panels.
+
+- Two clips alternate: the bobcat/skid steer footage, then the wall saw trench
+  removal, then back to the start. The list lives in the `<script>` at the bottom
+  of each page — edit `clips` there to change the order or add a third.
+- To swap footage: update the `clips` list on **every** page, and the `src` on the
+  `bgvideo` and hero `<video>` tags (that's just the first clip shown before the
+  script takes over)
+- To turn the effect off on a page: remove `class="glass"` from its `<body>` tag
+- Phones don't run the fixed video (unreliable on iOS, drains battery) — they get
+  a dark background instead. Same for anyone with reduced-motion turned on.
+- The videos are still hosted on the old GoDaddy site. If that account lapses,
+  they die. Worth uploading copies to this repo.
+
 ## Notes
 
 - Search any file for `FILL IN` to find the blanks

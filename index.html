@@ -10,7 +10,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="glass">
+
+<!-- FIXED BACKGROUND VIDEO
+     Sits behind the whole page and stays put while content scrolls over it.
+     Hidden on phones (fixed video is unreliable on iOS and drains battery) and
+     for anyone who has reduced-motion turned on — both fall back to a dark
+     background, handled in style.css.
+     To swap the footage, change the src below. -->
+<div class="bgvideo" aria-hidden="true">
+  <video id="bgclip" class="playlist" autoplay muted playsinline preload="auto"
+         src="https://img1.wsimg.com/blobby/go/6514c6b9-9df9-4f51-b1af-a53c567ef092/video/img_0997.mp4"></video>
+</div>
+
 <a class="skip" href="#main">Skip to content</a>
 
 <div class="topbar">
@@ -43,10 +55,14 @@
 
 <!-- ================= HERO ================= -->
 <header class="hero">
-  <!-- FILL IN: this video is currently linked from the old GoDaddy site. Once the new site
-       is hosted, save a copy of the video with it and change src to your own file.
-       You can also swap in better/newer job footage any time. -->
-  <video autoplay muted loop playsinline preload="metadata"
+  <!-- MOBILE FALLBACK VIDEO.
+       On desktop this is hidden — the fixed background video at the top of the page
+       shows through instead. On phones the fixed video is turned off (unreliable on
+       iOS, drains battery) and this one plays in the hero as normal.
+       If you swap the footage, change it in BOTH places so they match.
+       Note: this file is still hosted on the old GoDaddy site. If that account ever
+       lapses, the video dies. Worth uploading a copy to this repo. -->
+  <video id="heroclip" class="playlist" autoplay muted playsinline preload="metadata"
          src="https://img1.wsimg.com/blobby/go/6514c6b9-9df9-4f51-b1af-a53c567ef092/video/img_0997.mp4"></video>
   <div class="scrim"></div>
   <div class="wrap">
@@ -381,6 +397,34 @@
 </footer>
 
 <script>
+/* Background video playlist — plays the bobcat clip, then the wall saw clip,
+   then back to the start. Runs on any video with class "playlist" (the fixed
+   background on desktop, the hero fallback on phones).
+   To change the order or add a clip, edit the list below. */
+(function(){
+  var clips = [
+    "https://img1.wsimg.com/blobby/go/6514c6b9-9df9-4f51-b1af-a53c567ef092/video/img_0997.mp4",
+    "https://img1.wsimg.com/blobby/go/6514c6b9-9df9-4f51-b1af-a53c567ef092/video/Wallsaw%20and%20breaking%20concrete%20in%20Arizo-6c4aa69.mp4"
+  ];
+
+  /* Respect reduced-motion — leave the video alone if the person opted out. */
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  Array.prototype.forEach.call(document.querySelectorAll('video.playlist'), function(v){
+    var i = 0;
+    function next(){
+      i = (i + 1) % clips.length;
+      v.src = clips[i];
+      v.load();
+      var p = v.play();
+      if (p && p.catch) p.catch(function(){});
+    }
+    v.addEventListener('ended', next);
+    /* If a clip fails to load, skip on rather than sitting on a black frame. */
+    v.addEventListener('error', next);
+  });
+})();
+
 document.querySelector('.navtoggle').addEventListener('click', function(){
   var links = document.getElementById('navlinks');
   var open = links.classList.toggle('open');

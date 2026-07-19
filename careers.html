@@ -10,7 +10,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="glass">
+
+<!-- FIXED BACKGROUND VIDEO
+     Sits behind the whole page while content scrolls over it.
+     Hidden on phones and for reduced-motion users — both fall back to a dark
+     background, handled in style.css. To swap footage, change the src here
+     (and on every other page, so they match). -->
+<div class="bgvideo" aria-hidden="true">
+  <video id="bgclip" class="playlist" autoplay muted playsinline preload="auto"
+         src="https://img1.wsimg.com/blobby/go/6514c6b9-9df9-4f51-b1af-a53c567ef092/video/img_0997.mp4"></video>
+</div>
+
 <a class="skip" href="#main">Skip to content</a>
 
 <div class="topbar">
@@ -298,6 +309,34 @@
 </footer>
 
 <script>
+/* Background video playlist — plays the bobcat clip, then the wall saw clip,
+   then back to the start. Runs on any video with class "playlist" (the fixed
+   background on desktop, the hero fallback on phones).
+   To change the order or add a clip, edit the list below. */
+(function(){
+  var clips = [
+    "https://img1.wsimg.com/blobby/go/6514c6b9-9df9-4f51-b1af-a53c567ef092/video/img_0997.mp4",
+    "https://img1.wsimg.com/blobby/go/6514c6b9-9df9-4f51-b1af-a53c567ef092/video/Wallsaw%20and%20breaking%20concrete%20in%20Arizo-6c4aa69.mp4"
+  ];
+
+  /* Respect reduced-motion — leave the video alone if the person opted out. */
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  Array.prototype.forEach.call(document.querySelectorAll('video.playlist'), function(v){
+    var i = 0;
+    function next(){
+      i = (i + 1) % clips.length;
+      v.src = clips[i];
+      v.load();
+      var p = v.play();
+      if (p && p.catch) p.catch(function(){});
+    }
+    v.addEventListener('ended', next);
+    /* If a clip fails to load, skip on rather than sitting on a black frame. */
+    v.addEventListener('error', next);
+  });
+})();
+
 document.querySelector('.navtoggle').addEventListener('click', function(){
   var links = document.getElementById('navlinks');
   var open = links.classList.toggle('open');
