@@ -13,6 +13,7 @@ anywhere — GoDaddy, Netlify, Vercel, or a normal web host.
 | `about.html` | Company, safety, licensing |
 | `contact.html` | Contact info and bid request form |
 | `rate-card.html` | Gated rate card request (lead capture) |
+| `careers.html` | Hiring / open positions |
 | `style.css` | Colors, fonts and layout for all five pages |
 
 To change a color or font everywhere at once, edit the top of `style.css`.
@@ -65,8 +66,8 @@ Search any file for `FILL IN` to find these in place.
 **Settled — no longer open questions**
 - Company name: So Cal Bobcat & SKAGGS Concrete Cutting (one name, everywhere)
 - License: CA #834117
-- Main phone: 714-748-1500
-- After hours: calls go to dispatch, ask for Art Robinson
+- Main phone: 714-787-9970
+- After hours: calls go to dispatch (no name published)
 - Rate card: gated behind a request form, not posted publicly
 
 **Company details**
@@ -93,6 +94,14 @@ beat it every time with a superintendent.
 - Project names with city and scope
 - Testimonials — three slots
 - Contractor names or logos (get written permission first)
+
+**Careers page**
+- Update the six roles to match what you're actually hiring for — delete any you're not
+- Confirm what class of driver's license the truck driver role needs
+- Add real benefits if you offer them (health, holidays, OT, boot allowance, 401k).
+  Specifics get applications; generalities don't.
+- Upload a current employment application PDF and uncomment the download button
+- Confirm which email should receive applications
 
 **Housekeeping**
 - Confirm the real Instagram handle — the old link looked misspelled

@@ -15,6 +15,7 @@ Company website. Plain HTML and CSS — no build step, no framework, no dependen
 | `services.html` | Services |
 | `projects.html` | Project gallery |
 | `about.html` | Company, safety, licensing |
+| `careers.html` | Hiring / open positions |
 | `contact.html` | Contact and bid request |
 | `rate-card.html` | Gated rate card request |
 | `style.css` | Colors, fonts, layout for all pages |
@@ -60,6 +61,8 @@ Keep photo filenames lowercase with no spaces: `irvine-coring-2026.jpg`, not `IM
 - [ ] Replace or delete the placeholder testimonials on `index.html`
 - [ ] Take the old public rate card PDF off skaggsconcretecutting.com
 - [ ] Confirm public email addresses
+- [ ] Update `careers.html` to match what you're actually hiring for
+- [ ] Upload a current employment application PDF and link it on `careers.html`
 
 Full list in `READ-ME-FIRST.md`.
 
