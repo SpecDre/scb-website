@@ -209,15 +209,23 @@
       <p class="eyebrow">Find us</p>
       <h2>2841 E. Coronado St., Anaheim</h2>
     </div>
-    <!-- FILL IN: embed a real map here. Easiest way — go to Google Maps, search the
-         address, click Share, then "Embed a map", copy the iframe code and paste it
-         in place of this gray box. -->
-    <div style="border:1px solid var(--line);background:
-      repeating-linear-gradient(45deg,#e7e4de 0 12px,#edebe6 12px 24px);
-      aspect-ratio:21/9;display:grid;place-items:center;text-align:center;padding:24px;
-      font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)">
-      Embed Google Map here<br><span style="text-transform:none;letter-spacing:0;font-size:.8rem">
-      Google Maps → search address → Share → Embed a map → paste the code</span>
+    <!-- TO EMBED THE REAL MAP:
+         1. Go to Google Maps and search 2841 E Coronado St, Anaheim CA 92806
+         2. Click Share, then "Embed a map"
+         3. Copy the <iframe> code Google gives you
+         4. Delete this whole block (from <div class="mapblock"> to its closing </div>)
+            and paste Google's iframe in its place
+         Until then, the block below shows the address with a working directions link. -->
+    <div class="mapblock">
+      <div class="mapinner">
+        <div class="eyebrow" style="margin-bottom:12px">Office &amp; yard</div>
+        <p class="mapaddr">2841 E. Coronado St.<br>Anaheim, CA 92806</p>
+        <p class="maphours">Office Monday – Friday, 5:00 AM – 5:00 PM<br>Crews available 24/7</p>
+        <div class="maprow">
+          <a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&amp;destination=2841+E+Coronado+St+Anaheim+CA+92806" target="_blank" rel="noopener">Get directions</a>
+          <a class="btn btn-dark" href="tel:7147481500">Call 714-748-1500</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -235,7 +243,11 @@
         </div>
         <div class="social">
           <a href="https://www.facebook.com/270174852842539">Facebook</a>
-          <a href="https://www.instagram.com/">Instagram</a>
+          <!-- INSTAGRAM: the handle on the old site looked misspelled
+               (socalbobcatconcretceuttinginc). Confirm the real handle, then put the
+               full URL below and uncomment it. A dead social link is worse than none.
+          <a href="https://www.instagram.com/YOUR-HANDLE-HERE">Instagram</a>
+          -->
           <a href="https://www.tiktok.com/@socalbobcat">TikTok</a>
         </div>
       </div>
