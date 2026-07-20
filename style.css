@@ -238,6 +238,25 @@ button[type=submit]{width:100%;background:var(--cut);color:#fff;border:0;cursor:
 button[type=submit]:hover{background:var(--cut-dark)}
 .formnote{font-size:.8rem;color:var(--steel);margin-top:12px;line-height:1.5}
 
+/* Honeypot — hidden from people, still reachable by bots that fill everything. */
+.hp{position:absolute!important;left:-9999px!important;width:1px!important;
+  height:1px!important;opacity:0!important;pointer-events:none}
+
+/* ---------- FORM STATUS (see form.js) ---------- */
+.formstatus{font-size:.92rem;line-height:1.6;margin-top:16px}
+.formstatus:empty{display:none}
+.formstatus a{color:inherit;font-weight:600}
+.formstatus.is-pending{color:var(--steel)}
+.formstatus.is-ok{border-left:3px solid var(--cut);background:var(--dust);
+  color:var(--ink);padding:16px 18px;margin-top:0}
+.formstatus.is-error{border-left:3px solid var(--cut);background:#fdf0ea;
+  color:var(--ink);padding:14px 16px}
+button[type=submit]:disabled{background:var(--steel);cursor:default}
+/* glass pages put forms on dark video — keep these legible there too */
+body.glass .formstatus.is-ok,
+body.glass .formstatus.is-error{background:rgba(0,0,0,.34);color:#f2f4f7}
+body.glass .formstatus.is-pending{color:#c9d0d8}
+
 /* ---------- FOOTER ---------- */
 footer.site{background:var(--ink);color:#fff;padding:56px 0 28px}
 .footgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px;margin-bottom:38px}

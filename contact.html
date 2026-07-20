@@ -143,17 +143,15 @@
         </div>
       </div>
 
-      <!-- ============================================================
-           FILL IN — THIS FORM IS NOT CONNECTED YET.
-           Right now it does nothing when submitted. Before the site goes live,
-           whoever hosts it needs to point it at a form handler so submissions
-           reach your inbox. Options that work with a plain HTML site:
-             - Formspree (formspree.io) — change action to your form URL
-             - Netlify Forms — add netlify to the <form> tag if hosted on Netlify
-             - Your host's built-in form handler
-           DO NOT LAUNCH WITHOUT THIS. An unconnected form silently loses bids.
-           ============================================================ -->
-      <form action="#" method="post">
+      <!-- Submissions are handled by form.js — the Formspree URL goes at the
+           top of that file. Until it's set, this form tells the visitor to
+           call or email instead of failing silently. -->
+      <form data-form action="https://formspree.io/f/xgogyorn" method="POST">
+        <input type="hidden" name="_subject" value="Bid request from the website">
+        <!-- Bots fill this in; people can't see it. Formspree drops any
+             submission where it has a value. Kept in the HTML rather than
+             added by script so it also works if form.js never loads. -->
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="two">
           <div class="field">
             <label for="f-name">Your name</label>
@@ -330,5 +328,6 @@ document.querySelector('.navtoggle').addEventListener('click', function(){
   this.setAttribute('aria-expanded', open);
 });
 </script>
+<script src="form.js"></script>
 </body>
 </html>

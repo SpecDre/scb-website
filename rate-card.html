@@ -96,25 +96,19 @@
         </div>
       </div>
 
-      <!-- ============================================================
-           FILL IN — NOT CONNECTED YET.
-           This form does nothing until it's pointed at a form handler
-           (Formspree, Netlify Forms, or your host's own).
+      <!-- Submissions are handled by form.js — the Formspree URL goes at the
+           top of that file.
 
-           HOW THIS WORKS ONCE CONNECTED:
-           1. Someone fills this out
-           2. You get an email with their info
-           3. You decide whether to send the rate card
-           4. You reply with the PDF attached
-
-           You approve every one manually, and every submission tells you
-           who is actively shopping. That's the whole point.
-
-           NOTE: a fully automatic version (auto-deliver after you click
-           approve) needs a real backend, not a plain HTML page. This
-           manual version gets you the same information today.
-           ============================================================ -->
-      <form action="#" method="post">
+           HOW THIS WORKS: someone fills this out, you get an email with their
+           info, you decide whether to send the rate card, you reply with the
+           PDF attached. You approve every one manually, and every submission
+           tells you who is actively shopping. That's the whole point. -->
+      <form data-form action="https://formspree.io/f/xgogyorn" method="POST">
+        <input type="hidden" name="_subject" value="Rate card request from the website">
+        <!-- Bots fill this in; people can't see it. Formspree drops any
+             submission where it has a value. Kept in the HTML rather than
+             added by script so it also works if form.js never loads. -->
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="two">
           <div class="field">
             <label for="r-name">Your name</label>
@@ -262,5 +256,6 @@ document.querySelector('.navtoggle').addEventListener('click', function(){
   this.setAttribute('aria-expanded', open);
 });
 </script>
+<script src="form.js"></script>
 </body>
 </html>
