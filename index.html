@@ -9,6 +9,78 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
+<!-- ================= STRUCTURED DATA =================
+     Tells Google the address, phone, hours and service area as facts
+     rather than making it guess from the page text. This is what feeds
+     the business panel in local search results.
+
+     Everything below is also stated visibly elsewhere on the site. If
+     the address, phone or hours ever change, change them here too —
+     Google flags a mismatch between this and the visible page.
+
+     Deliberately omitted: exact founding date (the site says "46 years"
+     but not a year) and map coordinates. Don't guess at either. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "So Cal Bobcat & SKAGGS Concrete Cutting",
+  "url": "https://www.socalbobcatskaggs.com/",
+  "telephone": "+1-714-787-9970",
+  "email": "socalbobcatestimating@yahoo.com",
+  "description": "Concrete cutting, core drilling, asphalt grinding, demolition, excavation and hauling for general contractors across Southern California.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2841 E. Coronado St.",
+    "addressLocality": "Anaheim",
+    "addressRegion": "CA",
+    "postalCode": "92806",
+    "addressCountry": "US"
+  },
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "address": "Anaheim, CA"
+    },
+    "description": "Southern California"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "05:00",
+    "closes": "17:00",
+    "description": "Office hours. Crews and emergency call-outs available 24/7."
+  }],
+  "sameAs": [
+    "https://www.facebook.com/270174852842539",
+    "https://www.tiktok.com/@socalbobcat"
+  ],
+  "hasCredential": "California Contractors License #834117",
+  "makesOffer": [
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Concrete cutting"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Core drilling"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Asphalt and concrete grinding"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Demolition and breaking"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Excavation and grading"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Hauling and removal"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Labor and equipment"}}
+  ]
+}
+</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.socalbobcatskaggs.com/">
+<!-- Social preview: what shows when this link is texted, emailed or posted. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="So Cal Bobcat &amp; SKAGGS Concrete Cutting">
+<meta property="og:title" content="So Cal Bobcat &amp; SKAGGS Concrete Cutting | Cutting, Coring, Demo &amp; Hauling — Anaheim, CA">
+<meta property="og:description" content="Concrete cutting, core drilling, demolition, excavation and hauling for general contractors across Southern California. 46 years. Licensed and insured. Anaheim, CA.">
+<meta property="og:url" content="https://www.socalbobcatskaggs.com/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="So Cal Bobcat &amp; SKAGGS Concrete Cutting | Cutting, Coring, Demo &amp; Hauling — Anaheim, CA">
+<meta name="twitter:description" content="Concrete cutting, core drilling, demolition, excavation and hauling for general contractors across Southern California. 46 years. Licensed and insured. Anaheim, CA.">
 </head>
 <body class="glass">
 
@@ -59,9 +131,7 @@
        On desktop this is hidden — the fixed background video at the top of the page
        shows through instead. On phones the fixed video is turned off (unreliable on
        iOS, drains battery) and this one plays in the hero as normal.
-       If you swap the footage, change it in BOTH places so they match.
-       Note: this file is still hosted on the old GoDaddy site. If that account ever
-       lapses, the video dies. Worth uploading a copy to this repo. -->
+       If you swap the footage, change it in BOTH places so they match. -->
   <video id="heroclip" class="playlist" autoplay muted playsinline preload="metadata"
          src="video/skidsteers-breaking-slab.mp4"></video>
   <div class="scrim"></div>
