@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Sent on request rather than published — see the noindex tag on the page itself.
+Disallow: /rate-card.html
+
+Sitemap: https://www.socalbobcatskaggs.com/sitemap.xml

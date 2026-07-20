@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="So Cal Bobcat &amp; SKAGGS">
+  <!-- Same SB mark as the nav brand, in the site's cut-orange (#eb4707). -->
+  <rect width="64" height="64" fill="#eb4707"/>
+  <text x="32" y="33" fill="#ffffff"
+        font-family="Arial Narrow, Arial, Helvetica, sans-serif"
+        font-size="38" font-weight="700" letter-spacing="-1"
+        text-anchor="middle" dominant-baseline="central">SB</text>
+</svg>
