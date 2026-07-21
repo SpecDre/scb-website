@@ -238,6 +238,16 @@ button[type=submit]{width:100%;background:var(--cut);color:#fff;border:0;cursor:
 button[type=submit]:hover{background:var(--cut-dark)}
 .formnote{font-size:.8rem;color:var(--steel);margin-top:12px;line-height:1.5}
 
+/* ---------- CALLOUT PANEL ----------
+   Bordered box for a short message plus a button. Had been an inline white
+   background, which turned into an unreadable white slab on the glass pages
+   where the body text is light. */
+.callout{margin-top:34px;border:1px solid var(--line);background:var(--paper);
+  padding:26px 28px;max-width:640px}
+.callout p{margin-bottom:16px}
+body.glass .callout{background:rgba(18,22,29,.6);border-color:rgba(255,255,255,.14);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+
 /* Honeypot — hidden from people, still reachable by bots that fill everything. */
 .hp{position:absolute!important;left:-9999px!important;width:1px!important;
   height:1px!important;opacity:0!important;pointer-events:none}
