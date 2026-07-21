@@ -270,17 +270,222 @@
       </div>
     </div>
 
-    <!-- FILL IN — APPLICATION PDF
-         Both old sites had an employment application PDF:
-           - skaggsconcretecutting.com/emapp.pdf
-           - the Bobcat site had a hiring PDF as well
-         Get a current version, upload it to the repo, then uncomment the block below
-         and point href at the filename.
-
     <div style="margin-top:40px">
-      <a class="btn btn-dark" href="employment-application.pdf" download>Download application (PDF)</a>
+      <a class="btn btn-dark" href="#apply">Or apply online</a>
     </div>
-    -->
+  </div>
+</section>
+
+<!-- ================= ONLINE APPLICATION =================
+     This replaces the old paper application (the 2020 Skaggs emapp.pdf).
+
+     WHERE IT GOES: the form's action below is its own Formspree form,
+     separate from the bid request form, so applications land in the
+     dispatch inbox instead of estimating. To repoint it, change the
+     action attribute — nothing in form.js needs editing.
+
+     WHAT IT DELIBERATELY DOES NOT ASK, and why:
+       - Social Security number, date of birth, driver's licence number.
+         Never collect these on a public web form. It emails them in the
+         clear and makes the company a target. Get them in person once
+         someone is actually being hired, on the new-hire packet.
+       - Past wages. California Labor Code 432.3 bars asking an applicant
+         what they used to earn. Asking what they WANT is fine, so that
+         is what the pay field asks.
+       - Criminal convictions. California's Fair Chance Act generally
+         stops employers with 5 or more employees asking before a
+         conditional offer. The old paper form asked this on page 3.
+         Have counsel or an HR advisor confirm before adding it back.
+     ================= -->
+<section id="apply">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Apply online</p>
+      <h2>Employment application</h2>
+      <p>
+        Fill this out from your phone — nothing to print, nothing to scan. It goes
+        straight to dispatch. If you'd rather do it on paper, come by the yard during
+        office hours and we'll hand you one.
+      </p>
+    </div>
+
+    <form data-form action="https://formspree.io/f/xgogyorn" method="POST"
+          data-done="<strong>Application received.</strong> Dispatch will look it over and call you if there's a fit.">
+      <input type="hidden" name="_subject" value="JOB APPLICATION from the website">
+      <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <h3 class="formhead">About you</h3>
+      <div class="two">
+        <div class="field">
+          <label for="a-name">Full name</label>
+          <input id="a-name" name="Name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="a-phone">Phone</label>
+          <input id="a-phone" name="Phone" type="tel" autocomplete="tel" required>
+        </div>
+      </div>
+      <div class="two">
+        <div class="field">
+          <label for="a-email">Email</label>
+          <input id="a-email" name="Email" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="a-city">City you live in</label>
+          <input id="a-city" name="City" type="text" autocomplete="address-level2" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="a-18">Are you 18 or older?</label>
+        <select id="a-18" name="18 or older" required>
+          <option value="">Choose one</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+
+      <h3 class="formhead">The job</h3>
+      <div class="field">
+        <label for="a-role">Position you're applying for</label>
+        <select id="a-role" name="Position" required>
+          <option value="">Choose one</option>
+          <option>Saw Operator</option>
+          <option>Core Drill Operator</option>
+          <option>Skid Steer / Equipment Operator</option>
+          <option>Laborer</option>
+          <option>Driver — Class A</option>
+          <option>Driver — Class B</option>
+          <option>Driver — Class C</option>
+          <option>Estimator</option>
+          <option>Dispatcher</option>
+          <option>Anything available</option>
+        </select>
+      </div>
+      <div class="two">
+        <div class="field">
+          <label for="a-type">Full time or part time</label>
+          <select id="a-type" name="Full or part time">
+            <option>Full time</option>
+            <option>Part time</option>
+            <option>Either</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="a-start">When can you start?</label>
+          <input id="a-start" name="Can start" type="text" placeholder="Date, or right away">
+        </div>
+      </div>
+      <div class="two">
+        <div class="field">
+          <label for="a-hours">Weekends, nights and call-outs</label>
+          <select id="a-hours" name="Weekends nights and call-outs">
+            <option value="">Choose one</option>
+            <option>Yes to all of it</option>
+            <option>Weekends yes, nights no</option>
+            <option>Nights yes, weekends no</option>
+            <option>Overtime only, no nights or weekends</option>
+            <option>Straight days only</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="a-pay">Pay you're looking for</label>
+          <input id="a-pay" name="Pay wanted" type="text" placeholder="Hourly rate">
+        </div>
+      </div>
+
+      <h3 class="formhead">Experience</h3>
+      <div class="two">
+        <div class="field">
+          <label for="a-years">Years in this line of work</label>
+          <input id="a-years" name="Years experience" type="text" placeholder="None is fine — say so">
+        </div>
+        <div class="field">
+          <label for="a-certs">Certifications, if any</label>
+          <input id="a-certs" name="Certifications" type="text" placeholder="OSHA 10 or 30, forklift, first aid">
+        </div>
+      </div>
+      <div class="field">
+        <label for="a-equip">Equipment and tools you've run</label>
+        <textarea id="a-equip" name="Equipment run" placeholder="Flat saw, wall saw, core rig, skid steer, mini excavator, breaker — whatever you've actually operated. If you're new to it, say that instead; we train."></textarea>
+      </div>
+
+      <!-- Shown only when a driving position is selected. Visible by default so
+           it still works with JavaScript off. -->
+      <div id="driverblock">
+        <h3 class="formhead">Drivers only</h3>
+        <div class="two">
+          <div class="field">
+            <label for="a-class">Licence class you hold</label>
+            <select id="a-class" name="Licence class">
+              <option value="">Choose one</option>
+              <option>Class A</option>
+              <option>Class B</option>
+              <option>Class C</option>
+              <option>None yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="a-dyears">Years driving commercially</label>
+            <input id="a-dyears" name="Years driving" type="text">
+          </div>
+        </div>
+        <div class="two">
+          <div class="field">
+            <label for="a-endorse">Endorsements</label>
+            <input id="a-endorse" name="Endorsements" type="text" placeholder="Air brakes, tanker, doubles/triples, hazmat">
+          </div>
+          <div class="field">
+            <label for="a-med">Current DOT medical card?</label>
+            <select id="a-med" name="DOT medical card">
+              <option value="">Choose one</option>
+              <option>Yes, current</option>
+              <option>Expired</option>
+              <option>No</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="a-drove">What have you driven?</label>
+          <textarea id="a-drove" name="Vehicles driven" placeholder="Dump truck, tractor-trailer, equipment trailer, water truck. Note if you've hauled equipment."></textarea>
+        </div>
+        <p class="formnote">
+          Don't send us your licence number here. Bring the licence and your medical
+          card when you come in.
+        </p>
+      </div>
+
+      <h3 class="formhead">Where you've worked</h3>
+      <div class="field">
+        <label for="a-hist">Last two employers</label>
+        <textarea id="a-hist" name="Work history" placeholder="Company, what you did, roughly when, and whether we can call them. Two most recent is plenty."></textarea>
+      </div>
+      <div class="field">
+        <label for="a-refs">References</label>
+        <textarea id="a-refs" name="References" placeholder="Name, how they know you, and a phone number. Two or three."></textarea>
+      </div>
+
+      <h3 class="formhead">Anything else</h3>
+      <div class="field">
+        <label for="a-note">Tell us whatever else matters</label>
+        <textarea id="a-note" name="Notes" placeholder="Languages you speak, whether you have your own transport, when you're reachable."></textarea>
+      </div>
+
+      <div class="field check">
+        <label for="a-cert">
+          <input id="a-cert" name="Certified true" type="checkbox" value="Yes" required>
+          Everything above is true and complete as best I know.
+        </label>
+      </div>
+
+      <button class="btn btn-primary" type="submit">Send application</button>
+
+      <p class="formnote">
+        We don't ask for your Social Security number, date of birth or licence number
+        on this form, and you shouldn't send them. That paperwork happens in person if
+        you're hired. Prefer to talk to someone? Call
+        <a href="tel:7147879970">714-787-9970</a> or come by the yard.
+      </p>
+    </form>
   </div>
 </section>
 
@@ -378,6 +583,21 @@ document.querySelector('.navtoggle').addEventListener('click', function(){
   var open = links.classList.toggle('open');
   this.setAttribute('aria-expanded', open);
 });
+
+/* Hide the drivers-only questions unless a driving position is picked.
+   The block starts visible in the HTML, so with JavaScript off everyone
+   simply sees it and non-drivers leave it blank. */
+(function(){
+  var role = document.getElementById('a-role');
+  var block = document.getElementById('driverblock');
+  if (!role || !block) return;
+  function sync(){
+    block.hidden = role.value.indexOf('Driver') !== 0;
+  }
+  role.addEventListener('change', sync);
+  sync();
+})();
 </script>
+<script src="form.js"></script>
 </body>
 </html>

@@ -270,6 +270,31 @@ button[type=submit]{width:100%;background:var(--cut);color:#fff;border:0;cursor:
 button[type=submit]:hover{background:var(--cut-dark)}
 .formnote{font-size:.8rem;color:var(--steel);margin-top:12px;line-height:1.5}
 
+/* ---------- LONG FORMS ----------
+   The employment application is long enough to need signposting, so it is
+   broken into labelled groups. First heading sits flush; the rest get a rule
+   above them to separate the group from the fields before it. */
+.formhead{font-family:var(--display);text-transform:uppercase;font-size:1.05rem;
+  letter-spacing:.06em;margin-bottom:16px;
+  margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+/* The first group opens the form — no rule needed above it. Direct children
+   only, so a heading nested in a sub-block (the drivers-only group) keeps its
+   separator instead of counting as first-of-type inside its own wrapper. */
+form > .formhead:first-of-type{margin-top:0;padding-top:0;border-top:0}
+/* Wins over `body.glass h3{color:#fff}`, which would otherwise flatten these
+   to plain white and lose the group separation. */
+.formhead,body.glass .formhead{color:var(--cut)}
+body.glass .formhead{border-top-color:rgba(255,255,255,.14)}
+
+/* Checkbox rows read the other way round to text fields — box first, then a
+   sentence in normal case rather than a mono all-caps label. */
+.check label{display:flex;align-items:flex-start;gap:11px;text-transform:none;
+  font-family:var(--body);font-size:.94rem;letter-spacing:0;color:var(--ink);
+  line-height:1.5;margin-bottom:0}
+.check input[type=checkbox]{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--cut)}
+body.glass .check label{color:#e7eaee}
+[hidden]{display:none!important}
+
 /* ---------- CALLOUT PANEL ----------
    Bordered box for a short message plus a button. Had been an inline white
    background, which turned into an unreadable white slab on the glass pages
