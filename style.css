@@ -56,7 +56,9 @@ h3{font-size:1.4rem;font-weight:600;letter-spacing:.02em}
 .topbar{background:var(--ink);color:#fff;font-family:var(--mono);font-size:.74rem;letter-spacing:.05em}
 .topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;
   padding-top:9px;padding-bottom:9px;flex-wrap:wrap}
-.topbar a{text-decoration:none}
+/* nowrap so a narrow screen never splits the number itself across two lines
+   ("714-787-" / "9970"). It moves to the next line whole instead. */
+.topbar a{text-decoration:none;white-space:nowrap}
 .topbar a:hover{color:var(--cut)}
 /* On phones the two spans wrap to separate lines. Tighten them so the sticky
    header stays a reasonable share of a small screen. */
@@ -64,6 +66,10 @@ h3{font-size:1.4rem;font-weight:600;letter-spacing:.02em}
   .topbar{font-size:.66rem;letter-spacing:.03em}
   .topbar .wrap{padding-top:6px;padding-bottom:6px;gap:1px;
     justify-content:center;text-align:center;line-height:1.5}
+  /* Give the number its own line rather than letting it trail the hours and
+     wrap unpredictably, and drop the separator that would dangle in front. */
+  .topbar .sep{display:none}
+  .topbar a{display:block}
 }
 
 /* ---------- STICKY HEADER ----------
