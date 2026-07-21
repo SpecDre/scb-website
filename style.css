@@ -152,15 +152,27 @@ section{padding:84px 0}
 .sec-ink .sec-head p{color:#a6adb8}
 
 /* ---------- SERVICES GRID ---------- */
-.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;
+/* 330px minimum keeps this to three columns on a desktop container instead of
+   four. At four, each card had ~240px of text and almost every line wrapped. */
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:1px;
   background:var(--line);border:1px solid var(--line)}
-.svc article{background:var(--paper);padding:32px 28px;display:flex;flex-direction:column}
+.svc article{background:var(--paper);padding:34px 30px;display:flex;flex-direction:column}
 .svc .num{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;color:var(--cut);margin-bottom:14px}
 .svc h3{margin-bottom:12px}
 .svc p{font-size:.95rem;color:var(--steel);line-height:1.6}
-.svc ul{margin-top:16px;padding:0;list-style:none}
-.svc li{font-size:.88rem;padding:6px 0 6px 16px;position:relative;border-top:1px solid var(--dust)}
-.svc li::before{content:"";position:absolute;left:0;top:15px;width:7px;height:2px;background:var(--cut)}
+.svc ul{margin-top:18px;padding:0;list-style:none}
+.svc li{font-size:.92rem;line-height:1.45;padding:9px 0 9px 18px;position:relative;
+  border-top:1px solid var(--dust)}
+.svc li::before{content:"";position:absolute;left:0;top:17px;width:7px;height:2px;background:var(--cut)}
+/* Seven cards across three columns leaves a two-cell hole on the last row.
+   Let a lone seventh card stretch over it and run its list in two columns.
+   Scoped to :nth-child(7):last-child so the eight-card careers grid, which
+   fills its rows, is untouched. */
+@media(min-width:1024px){
+  .svc article:nth-child(7):last-child{grid-column:1 / -1}
+  .svc article:nth-child(7):last-child ul{columns:2;column-gap:34px}
+  .svc article:nth-child(7):last-child li{break-inside:avoid}
+}
 
 /* ---------- CHIPS ---------- */
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
