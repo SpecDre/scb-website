@@ -106,8 +106,7 @@ var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xgogyorn';
           done.innerHTML =
             '<strong>Got it — your request is in.</strong> ' +
             'We read these during business hours and reply by email. ' +
-            'If it\'s urgent or off-hours, call <a href="' + PHONE_HREF + '">' + PHONE + '</a>' +
-            ' and you\'ll reach dispatch, not a voicemail box.';
+            'If it\'s urgent or off-hours, call <a href="' + PHONE_HREF + '">' + PHONE + '</a>.';
           form.parentNode.replaceChild(done, form);
         })
         .catch(function () {
