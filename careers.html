@@ -281,10 +281,24 @@
      Proficiency / Authorized Vehicles sheet — same vehicle classes, same
      endorsements, same training items, as tick boxes.
 
-     WHERE IT GOES: the form's action below is its own Formspree form,
-     separate from the bid request form, so applications land in the
-     dispatch inbox instead of estimating. To repoint it, change the
-     action attribute — nothing in form.js needs editing.
+     WHERE IT GOES: applications go to the estimating inbox, the same
+     Formspree form as bid requests. A separate dispatch inbox was the
+     plan, but the Formspree free tier allows only two linked email
+     addresses and both are already spoken for.
+
+     They are still easy to pick out: every one arrives with the subject
+     "JOB APPLICATION from the website". A mail rule on that phrase will
+     file or forward them.
+
+     If a dispatch inbox is ever wanted, add it in Formspree, create a
+     form pointing at it, and change the action attribute below. Nothing
+     in form.js needs editing — each form carries its own destination.
+
+     WATCH THE CAP: the free tier allows 50 submissions a month across
+     every form on the account. Applications now share that pool with bid
+     requests and rate card requests. If the allowance runs out, bid
+     requests stop arriving — that is lost work, so keep an eye on the
+     Formspree dashboard for the first month or two.
 
      WHAT IT DELIBERATELY DOES NOT ASK, and why:
        - Social Security number, date of birth, driver's licence number.
@@ -305,8 +319,8 @@
       <p class="eyebrow">Apply online</p>
       <h2>Employment application</h2>
       <p>
-        Fill this out from your phone — nothing to print, nothing to scan. It goes
-        straight to dispatch. If you'd rather do it on paper, come by the yard during
+        Fill this out from your phone — nothing to print, nothing to scan. It comes
+        straight to the office. If you'd rather do it on paper, come by the yard during
         office hours and we'll hand you one.
       </p>
     </div>

@@ -5,11 +5,17 @@
    configured for that form on the Formspree dashboard.
 
    EACH FORM'S DESTINATION IS ITS OWN action="..." ATTRIBUTE.
-   That is the one place to change it. Bid requests and rate card
-   requests go to one Formspree form; job applications go to a
-   different one so they land in the dispatch inbox instead of
-   estimating. To repoint a form, edit its action in the HTML —
-   nothing in this file needs touching.
+   That is the one place to change it. To repoint a form, edit its
+   action in the HTML — nothing in this file needs touching.
+
+   All three forms currently point at the same Formspree form, so
+   everything lands in the estimating inbox. Job applications are
+   tagged with the subject "JOB APPLICATION from the website" so a
+   mail rule can file or forward them.
+
+   Note the free tier allows 50 submissions a month across the whole
+   account, shared by all three forms. If that runs out, bid requests
+   stop arriving.
 
    The URLs are public form IDs, not secrets. They are meant to be
    visible in the page source; that is how Formspree works.
