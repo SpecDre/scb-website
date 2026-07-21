@@ -351,13 +351,29 @@
           <input id="a-city" name="City" type="text" autocomplete="address-level2" required>
         </div>
       </div>
-      <div class="field">
-        <label for="a-18">Are you 18 or older?</label>
-        <select id="a-18" name="18 or older" required>
-          <option value="">Choose one</option>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
+      <!-- Asked of everyone, not just drivers. Someone applying as a laborer who
+           already holds a Class A is worth knowing about, and they would never
+           see this if it sat inside the drivers-only block. -->
+      <div class="two">
+        <div class="field">
+          <label for="a-18">Are you 18 or older?</label>
+          <select id="a-18" name="18 or older" required>
+            <option value="">Choose one</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="a-licence">What driver's licence do you have?</label>
+          <select id="a-licence" name="Driver licence" required>
+            <option value="">Choose one</option>
+            <option>Class A — commercial</option>
+            <option>Class B — commercial</option>
+            <option>Class C — regular licence</option>
+            <option>Permit only</option>
+            <option>No licence right now</option>
+          </select>
+        </div>
       </div>
 
       <h3 class="formhead">The job</h3>
@@ -429,23 +445,13 @@
            it still works with JavaScript off. -->
       <div id="driverblock">
         <h3 class="formhead">Drivers only</h3>
+        <!-- Licence class is asked once, up in "About you" — everyone answers it.
+             What is left here is the commercial detail only drivers can fill in. -->
         <div class="two">
-          <div class="field">
-            <label for="a-class">Licence class you hold</label>
-            <select id="a-class" name="Licence class">
-              <option value="">Choose one</option>
-              <option>Class A</option>
-              <option>Class B</option>
-              <option>Class C</option>
-              <option>None yet</option>
-            </select>
-          </div>
           <div class="field">
             <label for="a-dyears">Years driving commercially</label>
             <input id="a-dyears" name="Years driving" type="text">
           </div>
-        </div>
-        <div class="two">
           <div class="field">
             <label for="a-trans">Transmission</label>
             <select id="a-trans" name="Transmission">
@@ -455,15 +461,15 @@
               <option>Both</option>
             </select>
           </div>
-          <div class="field">
-            <label for="a-med">Current DOT medical card?</label>
-            <select id="a-med" name="DOT medical card">
-              <option value="">Choose one</option>
-              <option>Yes, current</option>
-              <option>Expired</option>
-              <option>No</option>
-            </select>
-          </div>
+        </div>
+        <div class="field">
+          <label for="a-med">Current DOT medical card?</label>
+          <select id="a-med" name="DOT medical card">
+            <option value="">Choose one</option>
+            <option>Yes, current</option>
+            <option>Expired</option>
+            <option>No</option>
+          </select>
         </div>
 
         <div class="field">
