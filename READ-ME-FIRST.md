@@ -90,8 +90,11 @@ Generic "safety is our top priority" language is on there now. Real specifics
 beat it every time with a superintendent.
 
 **Proof (the part that actually sells)**
-- Job photos — eight empty slots on the projects page, four on the home page
-- Project names with city and scope
+- ~~Job photos~~ — done. 15 real job photos are live on the projects page, four
+  of them also on the home page.
+- Project names with city and scope — the photo captions describe the work but
+  name no projects or cities yet. Adding "Medical office TI, Irvine" to each one
+  is the single cheapest credibility upgrade left.
 - Testimonials — three slots
 - Contractor names or logos (get written permission first)
 

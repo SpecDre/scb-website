@@ -295,14 +295,15 @@
 </footer>
 
 <script>
-/* Background video playlist — plays the bobcat clip, then the wall saw clip,
-   then back to the start. Runs on any video with class "playlist" (the fixed
-   background on desktop, the hero fallback on phones).
+/* Background video playlist — alternates the two clips below, then back to the
+   start. Runs on any video with class "playlist" (the fixed background on
+   desktop, the hero fallback on phones). All clips are H.264 so they play in
+   every browser — HEVC does not.
    To change the order or add a clip, edit the list below. */
 (function(){
   var clips = [
     "video/skidsteers-breaking-slab.mp4",
-    "video/wallsaw-trench-removal.mp4"
+    "video/concrete-slab-sawing.mp4"
   ];
 
   /* Respect reduced-motion — leave the video alone if the person opted out. */

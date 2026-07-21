@@ -256,15 +256,13 @@
       <p>Video and photos straight off the job. Need to see something specific for a bid you're putting together? Ask and we'll send it.</p>
     </div>
 
-    <!-- NOTE: the two videos are real job footage. The four cards after them are
-         empty placeholders — replace <div class="ph"> with <img src="photo.jpg" alt="...">
-         and update the project name / city / scope. Get the GC's OK before naming
-         their company. -->
-    <!-- TO ADD A JOB: copy one of the <div class="card"> blocks below, paste it above
-         the others, then replace the <video> tag with:
-           <img src="your-photo.jpg" alt="what it shows">
-         and update the tag line, project name and description underneath.
-         Upload photos to the repo first. Lowercase filenames, no spaces. -->
+    <!-- Every card here is real job footage or a real job photo. This page shows a
+         selection; the full set lives on projects.html.
+         TO ADD A JOB: copy one of the <div class="card"> blocks below, paste it above
+         the others, then point the <img> at your file and update the tag line,
+         project name and description underneath.
+         Photos go in photos/ — lowercase filenames, no spaces. Get the GC's OK
+         before naming their company. -->
     <div class="projects">
       <div class="card">
         <div class="shot">
@@ -290,8 +288,51 @@
         </div>
       </div>
 
-      <!-- FILL IN: replace <div class="ph"> with <img src="yourphoto.jpg" alt="..."> -->
-</div>
+      <div class="card">
+        <div class="shot">
+          <img src="photos/core-drilling-interior.jpg" width="1600" height="1000" loading="lazy"
+            alt="Core drill rig mounted on a stand indoors beside a blue core barrel, metal stud framing behind it">
+        </div>
+        <div class="meta">
+          <div class="tag">Core drilling</div>
+          <strong>Interior coring</strong>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="shot">
+          <img src="photos/wall-saw-loading-dock.jpg" width="1600" height="1000" loading="lazy"
+            alt="Large wall saw with a diamond blade parked against a loading dock wall, hoses run across the concrete">
+        </div>
+        <div class="meta">
+          <div class="tag">Wall sawing</div>
+          <strong>Loading dock cuts</strong>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="shot">
+          <img src="photos/saw-cut-trench-parking-lot.jpg" width="1600" height="1000" loading="lazy"
+            alt="Long straight saw cut and open trench across an asphalt parking lot with spoil piled alongside">
+        </div>
+        <div class="meta">
+          <div class="tag">Cutting · Excavation</div>
+          <strong>Parking lot trench</strong>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="shot">
+          <img src="photos/dump-truck-and-skid-steers.jpg" width="1600" height="1000" loading="lazy"
+            alt="Orange dump truck with two Bobcat skid steers on a trailer parked in front of a building">
+        </div>
+        <div class="meta">
+          <div class="tag">Equipment · Hauling</div>
+          <strong>Mobilized and staged</strong>
+        </div>
+      </div>
+
+    </div>
 
     <p style="margin-top:30px"><a class="btn btn-dark" href="projects.html">View all projects</a></p>
   </div>
@@ -476,14 +517,15 @@
 </footer>
 
 <script>
-/* Background video playlist — plays the bobcat clip, then the wall saw clip,
-   then back to the start. Runs on any video with class "playlist" (the fixed
-   background on desktop, the hero fallback on phones).
+/* Background video playlist — alternates the two clips below, then back to the
+   start. Runs on any video with class "playlist" (the fixed background on
+   desktop, the hero fallback on phones). All clips are H.264 so they play in
+   every browser — HEVC does not.
    To change the order or add a clip, edit the list below. */
 (function(){
   var clips = [
     "video/skidsteers-breaking-slab.mp4",
-    "video/wallsaw-trench-removal.mp4"
+    "video/concrete-slab-sawing.mp4"
   ];
 
   /* Respect reduced-motion — leave the video alone if the person opted out. */
