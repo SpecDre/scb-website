@@ -58,9 +58,23 @@ h3{font-size:1.4rem;font-weight:600;letter-spacing:.02em}
   padding-top:9px;padding-bottom:9px;flex-wrap:wrap}
 .topbar a{text-decoration:none}
 .topbar a:hover{color:var(--cut)}
+/* On phones the two spans wrap to separate lines. Tighten them so the sticky
+   header stays a reasonable share of a small screen. */
+@media(max-width:640px){
+  .topbar{font-size:.66rem;letter-spacing:.03em}
+  .topbar .wrap{padding-top:6px;padding-bottom:6px;gap:1px;
+    justify-content:center;text-align:center;line-height:1.5}
+}
+
+/* ---------- STICKY HEADER ----------
+   Topbar and nav travel together so the hours and phone number stay on
+   screen instead of scrolling away with the top of the page. */
+.stickytop{position:sticky;top:0;z-index:100}
 
 /* ---------- NAV ---------- */
-.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);
+/* position:relative, not sticky — .stickytop does the sticking now, but the
+   mobile dropdown is absolutely positioned against this element. */
+.nav{position:relative;background:rgba(255,255,255,.97);
   backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;
   padding-top:14px;padding-bottom:14px}
