@@ -87,9 +87,11 @@ Full list in `READ-ME-FIRST.md`.
 Every page has a fixed video behind it (`<div class="bgvideo">` near the top of
 each file) with the content scrolling over translucent dark panels.
 
-- Three clips cycle: skid steers breaking slab, slab sawing, then the excavator
-  loading out, then back to the start. The list lives in the `<script>` at the
-  bottom of each page — edit `clips` there to change the order or add one.
+- Three clips cycle in the order of the headline — cut it, break it, haul it off:
+  slab sawing, then the skid steers breaking, then the excavator loading out, then
+  back to the start. The list lives in the `<script>` at the bottom of each page —
+  edit `clips` there to change the order or add one. Keep it matching the headline
+  if you reorder.
 - To swap footage: update the `clips` list on **every** page, and the `src` on the
   `bgvideo` and hero `<video>` tags (that's just the first clip shown before the
   script takes over)

@@ -31,7 +31,7 @@
      (and on every other page, so they match). -->
 <div class="bgvideo" aria-hidden="true">
   <video id="bgclip" class="playlist" autoplay muted playsinline preload="auto"
-         src="video/skidsteers-breaking-slab.mp4"></video>
+         src="video/concrete-slab-sawing.mp4"></video>
 </div>
 
 <a class="skip" href="#main">Skip to content</a>
@@ -612,15 +612,16 @@
 </footer>
 
 <script>
-/* Background video playlist — cycles the three clips below, then back to the
-   start. Runs on any video with class "playlist" (the fixed background on
+/* Background video playlist — cut it, break it, haul it off, in that order,
+   matching the headline. Sawing, then the skid steers, then loading out, then
+   back to the start. Runs on any video with class "playlist" (the fixed background on
    desktop, the hero fallback on phones). All clips are H.264 so they play in
    every browser — HEVC does not.
    To change the order or add a clip, edit the list below. */
 (function(){
   var clips = [
-    "video/skidsteers-breaking-slab.mp4",
     "video/concrete-slab-sawing.mp4",
+    "video/skidsteers-breaking-slab.mp4",
     "video/roboperating.mp4"
   ];
 
