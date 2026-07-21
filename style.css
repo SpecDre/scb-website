@@ -288,11 +288,17 @@ body.glass .formhead{border-top-color:rgba(255,255,255,.14)}
 
 /* Checkbox rows read the other way round to text fields — box first, then a
    sentence in normal case rather than a mono all-caps label. */
-.check label{display:flex;align-items:flex-start;gap:11px;text-transform:none;
+.check label,.checks label{display:flex;align-items:flex-start;gap:11px;text-transform:none;
   font-family:var(--body);font-size:.94rem;letter-spacing:0;color:var(--ink);
   line-height:1.5;margin-bottom:0}
-.check input[type=checkbox]{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--cut)}
-body.glass .check label{color:#e7eaee}
+.check input[type=checkbox],
+.checks input[type=checkbox]{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--cut)}
+body.glass .check label,body.glass .checks label{color:#e7eaee}
+
+/* Tick-box lists — two columns on a desktop, one on a phone. The label above
+   the group is the real label, so these read as options under it. */
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:11px 20px}
+@media(max-width:560px){.checks{grid-template-columns:1fr}}
 [hidden]{display:none!important}
 
 /* ---------- CALLOUT PANEL ----------

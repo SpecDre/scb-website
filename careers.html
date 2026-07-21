@@ -277,7 +277,9 @@
 </section>
 
 <!-- ================= ONLINE APPLICATION =================
-     This replaces the old paper application (the 2020 Skaggs emapp.pdf).
+     The drivers-only questions come straight off the company's own Driver
+     Proficiency / Authorized Vehicles sheet — same vehicle classes, same
+     endorsements, same training items, as tick boxes.
 
      WHERE IT GOES: the form's action below is its own Formspree form,
      separate from the bid request form, so applications land in the
@@ -431,8 +433,13 @@
         </div>
         <div class="two">
           <div class="field">
-            <label for="a-endorse">Endorsements</label>
-            <input id="a-endorse" name="Endorsements" type="text" placeholder="Air brakes, tanker, doubles/triples, hazmat">
+            <label for="a-trans">Transmission</label>
+            <select id="a-trans" name="Transmission">
+              <option value="">Choose one</option>
+              <option>Standard shift</option>
+              <option>Automatic only</option>
+              <option>Both</option>
+            </select>
           </div>
           <div class="field">
             <label for="a-med">Current DOT medical card?</label>
@@ -444,13 +451,48 @@
             </select>
           </div>
         </div>
+
         <div class="field">
-          <label for="a-drove">What have you driven?</label>
-          <textarea id="a-drove" name="Vehicles driven" placeholder="Dump truck, tractor-trailer, equipment trailer, water truck. Note if you've hauled equipment."></textarea>
+          <label>Vehicles you can safely operate</label>
+          <div class="checks">
+            <label><input type="checkbox" name="Can operate" value="Straight truck"> Straight truck</label>
+            <label><input type="checkbox" name="Can operate" value="Tractor and trailer combination"> Tractor &amp; trailer combination</label>
+            <label><input type="checkbox" name="Can operate" value="Doubles/triples"> Doubles / triples</label>
+            <label><input type="checkbox" name="Can operate" value="Tank vehicle"> Tank vehicle</label>
+            <label><input type="checkbox" name="Can operate" value="Dump vehicle"> Dump vehicle</label>
+            <label><input type="checkbox" name="Can operate" value="Under 10,000 lbs GVWR"> Under 10,000 lbs GVWR</label>
+            <label><input type="checkbox" name="Can operate" value="10,000 to 26,000 lbs GVWR"> 10,000 – 26,000 lbs GVWR</label>
+            <label><input type="checkbox" name="Can operate" value="26,001 lbs and over GVWR"> 26,001 lbs and over GVWR</label>
+          </div>
         </div>
+
+        <div class="field">
+          <label>Endorsements you hold</label>
+          <div class="checks">
+            <label><input type="checkbox" name="Endorsements" value="Air brakes"> Air brakes</label>
+            <label><input type="checkbox" name="Endorsements" value="Hazardous materials"> Hazardous materials</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Trained on</label>
+          <div class="checks">
+            <label><input type="checkbox" name="Trained on" value="Hooking up a trailer"> Properly hooking up a trailer</label>
+            <label><input type="checkbox" name="Trained on" value="Walk-around inspection"> Walk-around inspection</label>
+            <label><input type="checkbox" name="Trained on" value="Load securement and tie-down"> Securing a load, tie-down procedure</label>
+            <label><input type="checkbox" name="Trained on" value="Spotting an improperly loaded vehicle"> Spotting an improperly loaded vehicle</label>
+            <label><input type="checkbox" name="Trained on" value="Mirrors and blind spots"> Safe use of mirrors and blind spots</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="a-special">Special equipment</label>
+          <input id="a-special" name="Special equipment" type="text" placeholder="Anything else you're checked out on">
+        </div>
+
         <p class="formnote">
-          Don't send us your licence number here. Bring the licence and your medical
-          card when you come in.
+          Don't send your licence number here. Bring the licence and your medical card
+          when you come in.
         </p>
       </div>
 
