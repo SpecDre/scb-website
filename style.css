@@ -302,9 +302,11 @@ footer.site h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text
   color:var(--cut);margin-bottom:14px;font-weight:500}
 footer.site a{color:#c6cbd3;text-decoration:none;display:block;padding:4px 0;font-size:.92rem}
 footer.site a:hover{color:#fff}
-/* The estimating address is spelled out rather than hidden behind "Email us",
-   so it needs to wrap inside a narrow footer column instead of overflowing. */
-.footmail{font-size:.86rem;overflow-wrap:anywhere;line-height:1.5}
+/* The estimating address is spelled out rather than hidden behind "Email us".
+   It's too long for the narrow footer column, so there's a <wbr> after the @
+   in the markup and break-word here — the browser takes the @ break first and
+   only splits mid-word if it truly can't fit, so it never reads "yahoo.c / om". */
+.footmail{font-size:.84rem;overflow-wrap:break-word;line-height:1.5}
 footer.site p{color:#98a0ac;font-size:.92rem}
 .lic{font-family:var(--mono);font-size:.76rem;color:#98a0ac;letter-spacing:.04em;line-height:1.9;margin-top:14px}
 .social{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
