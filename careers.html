@@ -146,8 +146,7 @@
         <h3>Truck Driver</h3>
         <p>Hauling concrete, asphalt, dirt and spoils off our jobs and moving equipment between sites.</p>
         <ul>
-          <!-- FILL IN: confirm what class of license you actually require. -->
-          <li>Class A or B license</li>
+          <li>Class A license</li>
           <li>Clean driving record</li>
           <li>Dump truck experience preferred</li>
         </ul>
@@ -381,13 +380,15 @@
         <label for="a-role">Position you're applying for</label>
         <select id="a-role" name="Position" required>
           <option value="">Choose one</option>
+          <!-- Keep this list matching the role cards above. Both driving and
+               skid steer work require a Class A, and the license question in
+               "About you" already captures what the applicant holds, so there
+               is no need to split the driver role by class here. -->
           <option>Saw Operator</option>
+          <option>Skid Steer Operator</option>
           <option>Core Drill Operator</option>
-          <option>Skid Steer / Equipment Operator</option>
           <option>Laborer</option>
-          <option>Driver — Class A</option>
-          <option>Driver — Class B</option>
-          <option>Driver — Class C</option>
+          <option>Truck Driver</option>
           <option>Estimator</option>
           <option>Dispatcher</option>
           <option>Anything available</option>
@@ -654,7 +655,9 @@ document.querySelector('.navtoggle').addEventListener('click', function(){
   var block = document.getElementById('driverblock');
   if (!role || !block) return;
   function sync(){
-    block.hidden = role.value.indexOf('Driver') !== 0;
+    /* Matches anywhere in the value, not just the start — the role is called
+       "Truck Driver", so a startsWith test would never fire. */
+    block.hidden = !/driver/i.test(role.value);
   }
   role.addEventListener('change', sync);
   sync();
