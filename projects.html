@@ -325,7 +325,7 @@
 </footer>
 
 <script>
-/* Background video playlist — alternates the two clips below, then back to the
+/* Background video playlist — cycles the three clips below, then back to the
    start. Runs on any video with class "playlist" (the fixed background on
    desktop, the hero fallback on phones). All clips are H.264 so they play in
    every browser — HEVC does not.
@@ -333,7 +333,8 @@
 (function(){
   var clips = [
     "video/skidsteers-breaking-slab.mp4",
-    "video/concrete-slab-sawing.mp4"
+    "video/concrete-slab-sawing.mp4",
+    "video/roboperating.mp4"
   ];
 
   /* Respect reduced-motion — leave the video alone if the person opted out. */
