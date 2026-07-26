@@ -67,6 +67,14 @@ var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xgogyorn';
     var button = form.querySelector('button[type=submit]');
     var label = button ? button.textContent : 'Send';
 
+    // Take validation away from the browser's pre-submit check. When that
+    // check fails it swallows the click BEFORE our submit handler runs — and
+    // if its bubble doesn't render, the button just looks dead. With
+    // noValidate the submit event always fires, and WE run reportValidity()
+    // below, where a failure always produces a visible message. Set from JS
+    // so with JavaScript off the browser's own validation still applies.
+    form.noValidate = true;
+
     // Each form carries its own destination. Fall back to the shared endpoint
     // only if the action is missing entirely.
     var endpoint = form.getAttribute('action') || FORMSPREE_ENDPOINT;
@@ -87,6 +95,8 @@ var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xgogyorn';
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
+      try {
+
       if (trap && trap.value) return; // bot
 
       if (!configured) {
@@ -97,7 +107,18 @@ var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xgogyorn';
       }
 
       // Native validation first, so required fields behave as expected.
-      if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
+      // Don't rely on the browser's bubble alone — if it's suppressed or
+      // off-screen, a failed click looks like the button doing nothing.
+      // Always show our own message and jump to the field as well.
+      if (typeof form.reportValidity === 'function' && !form.reportValidity()) {
+        var bad = form.querySelector(':invalid');
+        setStatus(status, 'error',
+          '<strong>Something\'s missing.</strong> ' +
+          (bad && bad.validationMessage ? bad.validationMessage
+                                        : 'Please check the highlighted fields.'));
+        if (bad && bad.scrollIntoView) bad.scrollIntoView({ block: 'center' });
+        return;
+      }
 
       if (button) {
         button.disabled = true;
@@ -128,6 +149,14 @@ var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xgogyorn';
             '<strong>That didn\'t go through.</strong> Your request was not sent.'
           ));
         });
+
+      } catch (err) {
+        // Something unexpected broke inside this handler. Never strand the
+        // visitor on a dead button — hand the submission to the browser's
+        // native form POST instead. It goes straight to Formspree, and the
+        // _next hidden field brings the visitor back to our thank-you page.
+        form.submit();
+      }
     });
   }
 
