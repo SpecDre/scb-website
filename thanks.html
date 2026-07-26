@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank You | So Cal Bobcat &amp; SKAGGS Concrete Cutting</title>
+<meta name="description" content="Thanks — we got it. So Cal Bobcat & SKAGGS Concrete Cutting.">
+<!-- A confirmation page shouldn't turn up in search results. -->
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body class="glass">
+
+<!-- FIXED BACKGROUND VIDEO — matches the rest of the site. -->
+<div class="bgvideo" aria-hidden="true">
+  <video id="bgclip" class="playlist" autoplay muted playsinline preload="auto"
+         src="video/concrete-slab-sawing.mp4"></video>
+</div>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="stickytop">
+<div class="topbar">
+  <div class="wrap">
+    <span>Serving all of Southern California</span>
+    <span>Crews available 24/7 · Office Mon–Fri 7 AM – 5 PM<span class="sep"> · </span><a href="tel:7147879970">714-787-9970</a></span>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="mark">SB</span>
+      <span class="name">So Cal Bobcat &amp; SKAGGS<span>Concrete Cutting · Demolition</span></span>
+    </a>
+    <button class="navtoggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <div class="navlinks" id="navlinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a class="navcall" href="contact.html">Request a Bid</a>
+  </div>
+</nav>
+</div>
+
+<main id="main">
+<section>
+  <div class="wrap">
+    <div class="thanks">
+      <p class="eyebrow">Got it</p>
+      <!-- Headline and sub-line are set by the ?type= parameter below. These
+           defaults are what shows if the page is opened without one, or with
+           JavaScript off — so it always says something sensible. -->
+      <h1 id="thanks-head">Thank you — we got it.</h1>
+      <p id="thanks-sub" class="lede">
+        Your message is in. We read these during business hours and reply by email.
+      </p>
+      <p class="thanks-call">
+        If it's urgent or off-hours, call
+        <a href="tel:7147879970">714-787-9970</a> and you'll reach dispatch.
+      </p>
+      <div class="thanks-cta">
+        <a class="btn btn-primary" href="index.html">Back to home</a>
+        <a class="btn btn-outline" href="services.html">See what we do</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <h4>So Cal Bobcat &amp; SKAGGS</h4>
+        <p>Concrete cutting, coring, asphalt grinding, demolition, excavation and hauling throughout Southern California. Nights, weekends and emergency call-outs.</p>
+        <div class="lic">
+          CA Lic. #834117
+        </div>
+        <div class="social">
+          <a href="https://www.facebook.com/270174852842539">Facebook</a>
+          <a href="https://www.instagram.com/socalbobcatandskaggs/">Instagram</a>
+          <a href="https://www.tiktok.com/@socalbobcat">TikTok</a>
+        </div>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="services.html">Concrete cutting</a>
+        <a href="services.html">Core drilling</a>
+        <a href="services.html">Asphalt grinding</a>
+        <a href="services.html">Demolition &amp; breaking</a>
+        <a href="services.html">Excavation &amp; grading</a>
+        <a href="services.html">Hauling &amp; removal</a>
+        <a href="services.html">Labor &amp; equipment</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="about.html">About us</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Request a bid</a>
+        <a href="rate-card.html">Request rate card</a>
+        <a href="careers.html">Careers</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:7147879970">714-787-9970</a>
+        <a class="footmail" href="mailto:socalbobcatestimating@yahoo.com">socalbobcatestimating@<wbr>yahoo.com</a>
+      </div>
+    </div>
+    <div class="footbottom">
+      <span>&copy; 2026 So Cal Bobcat &amp; SKAGGS Concrete Cutting</span>
+      <span>Crews 24/7 · Office Mon–Fri 7 AM – 5 PM</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Background clip rotation — same as the other pages. */
+(function(){
+  var clips = ["video/concrete-slab-sawing.mp4","video/night-excavation.mp4"];
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  Array.prototype.forEach.call(document.querySelectorAll('video.playlist'), function(v){
+    var i = 0;
+    function next(){ i = (i+1) % clips.length; v.src = clips[i]; v.load(); var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+    v.addEventListener('ended', next);
+    v.addEventListener('error', next);
+  });
+})();
+
+document.querySelector('.navtoggle').addEventListener('click', function(){
+  var links = document.getElementById('navlinks');
+  var open = links.classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
+});
+
+/* Tailor the message to whichever form sent the visitor here. The forms pass
+   ?type=bid, ?type=application or ?type=rate. Anything else keeps the default. */
+(function(){
+  var messages = {
+    bid: {
+      head: "Thanks — your bid request is in.",
+      sub: "We'll review the scope and get a number back to you by email. Sending plans or photos speeds it up."
+    },
+    application: {
+      head: "Thanks — your application is in.",
+      sub: "Dispatch will look it over and call you if there's a fit. Bring your license and any cards when you come in."
+    },
+    rate: {
+      head: "Thanks — your request is in.",
+      sub: "We review each request and send the rate card by email during business hours."
+    }
+  };
+  var params = new URLSearchParams(window.location.search);
+  var m = messages[params.get('type')];
+  if (m) {
+    document.getElementById('thanks-head').textContent = m.head;
+    document.getElementById('thanks-sub').textContent = m.sub;
+  }
+})();
+</script>
+</body>
+</html>

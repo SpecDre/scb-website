@@ -325,8 +325,10 @@
     </div>
 
     <form data-form action="https://formspree.io/f/xgogyorn" method="POST"
-          data-done="<strong>Application received.</strong> Dispatch will look it over and call you if there's a fit.">
+          data-thanks="thanks.html?type=application">
       <input type="hidden" name="_subject" value="JOB APPLICATION from the website">
+      <!-- No-JavaScript path: Formspree redirects here after a native POST. -->
+      <input type="hidden" name="_next" value="https://www.socalbobcatskaggs.com/thanks.html?type=application">
       <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <h3 class="formhead">About you</h3>

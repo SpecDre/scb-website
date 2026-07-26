@@ -161,8 +161,11 @@
       <!-- Submissions are handled by form.js — the Formspree URL goes at the
            top of that file. Until it's set, this form tells the visitor to
            call or email instead of failing silently. -->
-      <form data-form action="https://formspree.io/f/xgogyorn" method="POST">
+      <form data-form action="https://formspree.io/f/xgogyorn" method="POST"
+            data-thanks="thanks.html?type=bid">
         <input type="hidden" name="_subject" value="Bid request from the website">
+        <!-- No-JavaScript path: Formspree redirects here after a native POST. -->
+        <input type="hidden" name="_next" value="https://www.socalbobcatskaggs.com/thanks.html?type=bid">
         <!-- Bots fill this in; people can't see it. Formspree drops any
              submission where it has a value. Kept in the HTML rather than
              added by script so it also works if form.js never loads. -->

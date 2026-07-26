@@ -112,17 +112,12 @@ var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xgogyorn';
       })
         .then(function (res) {
           if (!res.ok) throw new Error('HTTP ' + res.status);
-          // Replace the form outright — a cleared form looks like it failed.
-          var done = document.createElement('div');
-          done.className = 'formstatus is-ok';
-          done.setAttribute('role', 'status');
-          // A form can override the confirmation wording with data-done —
-          // "your request is in" is wrong for a job application.
-          done.innerHTML = (form.getAttribute('data-done') ||
-            '<strong>Got it — your request is in.</strong> ' +
-            'We read these during business hours and reply by email.') +
-            ' If it\'s urgent or off-hours, call <a href="' + PHONE_HREF + '">' + PHONE + '</a>.';
-          form.parentNode.replaceChild(done, form);
+          // Go to a dedicated confirmation page. The old behaviour replaced the
+          // form with an inline message where the form began — near the top of a
+          // long application — so someone who submitted from the bottom never saw
+          // it and thought nothing happened. A whole new page can't be scrolled
+          // past. data-thanks names the page; default covers a form without one.
+          window.location.href = form.getAttribute('data-thanks') || 'thanks.html';
         })
         .catch(function () {
           if (button) {

@@ -301,6 +301,14 @@ body.glass .check label,body.glass .checks label{color:#e7eaee}
 @media(max-width:560px){.checks{grid-template-columns:1fr}}
 [hidden]{display:none!important}
 
+/* ---------- THANK-YOU PAGE ---------- */
+.thanks{padding:40px 0 24px;max-width:60ch}
+.thanks h1{font-size:clamp(2.2rem,5.5vw,3.8rem);margin-top:6px}
+.thanks .lede{margin-top:20px;font-size:1.12rem;line-height:1.6}
+.thanks .thanks-call{margin-top:18px;color:var(--steel)}
+body.glass .thanks .thanks-call{color:#c9d0d8}
+.thanks-cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+
 /* ---------- CALLOUT PANEL ----------
    Bordered box for a short message plus a button. Had been an inline white
    background, which turned into an unreadable white slab on the glass pages

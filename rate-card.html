@@ -119,8 +119,11 @@
            info, you decide whether to send the rate card, you reply with the
            PDF attached. You approve every one manually, and every submission
            tells you who is actively shopping. That's the whole point. -->
-      <form data-form action="https://formspree.io/f/xgogyorn" method="POST">
+      <form data-form action="https://formspree.io/f/xgogyorn" method="POST"
+            data-thanks="thanks.html?type=rate">
         <input type="hidden" name="_subject" value="Rate card request from the website">
+        <!-- No-JavaScript path: Formspree redirects here after a native POST. -->
+        <input type="hidden" name="_next" value="https://www.socalbobcatskaggs.com/thanks.html?type=rate">
         <!-- Bots fill this in; people can't see it. Formspree drops any
              submission where it has a value. Kept in the HTML rather than
              added by script so it also works if form.js never loads. -->
