@@ -330,8 +330,14 @@ body.glass .callout{background:rgba(18,22,29,.6);border-color:rgba(255,255,255,.
 .formstatus.is-pending{color:var(--steel)}
 .formstatus.is-ok{border-left:3px solid var(--cut);background:var(--dust);
   color:var(--ink);padding:16px 18px;margin-top:0}
-.formstatus.is-error{border-left:3px solid var(--cut);background:#fdf0ea;
-  color:var(--ink);padding:14px 16px}
+.formstatus.is-error{border-left:4px solid var(--cut);background:#fdf0ea;
+  color:var(--ink);padding:16px 18px;font-size:1rem}
+.formstatus.is-error strong{display:block;margin-bottom:4px;font-size:1.05rem}
+/* A skipped required field is the usual reason a click "does nothing" — make
+   the offending fields obvious, not just a quiet jump. */
+.field-error input,.field-error select,.field-error textarea{
+  border-color:var(--cut)!important;outline:2px solid var(--cut);outline-offset:1px}
+.field-error label,.field-error>label{color:var(--cut)}
 button[type=submit]:disabled{background:var(--steel);cursor:default}
 /* glass pages put forms on dark video — keep these legible there too */
 body.glass .formstatus.is-ok,

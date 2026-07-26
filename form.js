@@ -106,17 +106,33 @@ var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xgogyorn';
         return;
       }
 
-      // Native validation first, so required fields behave as expected.
-      // Don't rely on the browser's bubble alone — if it's suppressed or
-      // off-screen, a failed click looks like the button doing nothing.
-      // Always show our own message and jump to the field as well.
-      if (typeof form.reportValidity === 'function' && !form.reportValidity()) {
-        var bad = form.querySelector(':invalid');
+      // Validate ourselves and, on failure, name EVERY empty required field
+      // loudly. A quiet jump-to-field read as "the button does nothing" — the
+      // most common reason a filled-out-looking form won't send is one skipped
+      // required field (often the checkbox at the very bottom).
+      var invalid = [].filter.call(form.elements, function (el) {
+        return el.willValidate && !el.checkValidity();
+      });
+      if (invalid.length) {
+        var labels = invalid.map(function (el) {
+          var lab = (el.id && form.querySelector('label[for="' + el.id + '"]')) ||
+                    el.closest('label') ||
+                    (el.closest('.field') && el.closest('.field').querySelector('label'));
+          var text = lab ? lab.textContent : (el.name || 'a field');
+          return text.replace(/\s+/g, ' ').trim().replace(/[:.]$/, '');
+        });
         setStatus(status, 'error',
-          '<strong>Something\'s missing.</strong> ' +
-          (bad && bad.validationMessage ? bad.validationMessage
-                                        : 'Please check the highlighted fields.'));
-        if (bad && bad.scrollIntoView) bad.scrollIntoView({ block: 'center' });
+          '<strong>Please finish these before sending:</strong> ' +
+          labels.join(' · '));
+        invalid.forEach(function (el) {
+          var box = el.closest('.field') || el;
+          box.classList.add('field-error');
+          el.addEventListener('input', function clear() {
+            box.classList.remove('field-error'); el.removeEventListener('input', clear);
+          });
+        });
+        invalid[0].scrollIntoView({ block: 'center' });
+        try { invalid[0].focus({ preventScroll: true }); } catch (e) { invalid[0].focus(); }
         return;
       }
 
