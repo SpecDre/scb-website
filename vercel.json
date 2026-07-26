@@ -2,7 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "headers": [
     {
-      "//": "HTML pages and the form script must never be held by a shared cache. A corporate/office proxy was serving a stale, broken form.js to desktop browsers while phones on another route got the fresh one. no-store forbids any cache — browser or proxy — from keeping a copy, so every visit fetches the current file.",
       "source": "/(.*)\\.html",
       "headers": [
         { "key": "Cache-Control", "value": "no-store, must-revalidate" }
