@@ -96,11 +96,11 @@ you have their OK.
 
 **Post 8 — `photos/saw-cutting-dock-doors.jpg`**
 
-> Saw work at a warehouse dock door. Hoses across the concrete, hi-vis on,
-> everything wet-cut for silica control.
+> Saw work at a warehouse dock door. Cut coming out square, dock back in
+> service.
 >
-> Ask us for our silica exposure control plan — every GC we work for gets it
-> before we mobilize.
+> Cutting, coring, breaking and hauling across Southern California since 1979.
+> 714-787-9970
 
 ---
 
