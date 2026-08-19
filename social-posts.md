@@ -3,7 +3,7 @@
 15 posts written from the photos and videos already in this repo. Two a week
 covers about two months. Nothing here needs to be shot or bought.
 
-Facts used in these: 47 years (Skaggs 1979, So Cal Bobcat 2002), CA license
+Facts used in these: 47 years (Skaggs 1979, SoCal Bobcat 2002), CA license
 #834117, 714-787-9970, crews 24/7, office Mon–Fri 7–5, Anaheim based, all of
 Southern California, ISNetworld member.
 
@@ -168,7 +168,7 @@ you have their OK.
 > Truck and excavator working a lot in [city].
 >
 > Two companies, one crew now: Skaggs Concrete Cutting has been at this since
-> 1979 and So Cal Bobcat since 2002. Same people, same equipment, one phone
+> 1979 and SoCal Bobcat since 2002. Same people, same equipment, one phone
 > number.
 >
 > 714-787-9970 · socalbobcatskaggs.com

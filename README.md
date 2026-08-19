@@ -1,4 +1,4 @@
-# So Cal Bobcat &amp; SKAGGS Concrete Cutting
+# SoCal Bobcat &amp; SKAGGS Concrete Cutting
 
 Company website. Plain HTML and CSS — no build step, no framework, no dependencies.
 

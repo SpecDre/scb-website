@@ -1,4 +1,4 @@
-# So Cal Bobcat & Skaggs — New Website
+# SoCal Bobcat & Skaggs — New Website
 
 Five pages, one stylesheet. Everything is plain HTML, so it can be hosted
 anywhere — GoDaddy, Netlify, Vercel, or a normal web host.
@@ -64,7 +64,7 @@ Search any file for `FILL IN` to find these in place.
 - Confirm the county list — remove any you don't actually service
 
 **Settled — no longer open questions**
-- Company name: So Cal Bobcat & SKAGGS Concrete Cutting (one name, everywhere)
+- Company name: SoCal Bobcat & SKAGGS Concrete Cutting (one name, everywhere)
 - License: CA #834117
 - Main phone: 714-787-9970
 - After hours: calls go to dispatch (no name published)
