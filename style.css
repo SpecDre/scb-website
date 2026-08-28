@@ -254,6 +254,25 @@ section{padding:84px 0}
 .bigphone{font-family:var(--display);font-size:2.4rem;font-weight:700;text-decoration:none;display:inline-block}
 .bigphone:hover{color:var(--cut)}
 
+/* ---------- TEAM CONTACTS (contact page) ---------- */
+/* align-items:start so a column with fewer people (dispatch) sizes to its own
+   content instead of stretching to match the taller estimating column. */
+.team{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+@media(max-width:760px){.team{grid-template-columns:1fr}}
+.teamcol{background:var(--paper);border:1px solid var(--line);padding:28px 28px 6px}
+.teamhead{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:22px}
+.person{padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--line)}
+.teamcol .person:last-child{border-bottom:0;margin-bottom:0}
+.pname{font-family:var(--display);text-transform:uppercase;font-size:1.35rem;font-weight:600;
+  letter-spacing:.02em;line-height:1}
+.prole{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--cut);margin-top:6px}
+.plines{margin-top:12px;display:flex;flex-direction:column;gap:5px;align-items:flex-start}
+.plines a{text-decoration:none;border-bottom:1px solid var(--line);max-width:100%;overflow-wrap:anywhere}
+.plines a:hover{border-bottom-color:var(--cut)}
+.plines .plabel{color:var(--steel);font-size:.94rem;line-height:1.5}
+
 form{background:var(--paper);border:1px solid var(--line);padding:30px 28px}
 .field{margin-bottom:18px}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -285,6 +304,9 @@ form > .formhead:first-of-type{margin-top:0;padding-top:0;border-top:0}
    to plain white and lose the group separation. */
 .formhead,body.glass .formhead{color:var(--cut)}
 body.glass .formhead{border-top-color:rgba(255,255,255,.14)}
+/* Intro line under a form heading (e.g. the bid form's "Request a bid"). */
+.formlede{font-size:.96rem;color:var(--steel);margin-top:4px;margin-bottom:24px;line-height:1.55}
+body.glass .formlede{color:#c9d0d8}
 
 /* Checkbox rows read the other way round to text fields — box first, then a
    sentence in normal case rather than a mono all-caps label. */
@@ -599,6 +621,17 @@ body.glass .infoblock .val{color:#eef1f4}
 body.glass .infoblock .val a{border-bottom-color:rgba(255,255,255,.25)}
 body.glass .bigphone{color:#fff}
 body.glass .bigphone:hover{color:var(--cut)}
+
+/* team contact panels on the glass pages — kept mostly opaque so they stay
+   readable even where backdrop-filter isn't supported, no fallback block needed */
+body.glass .teamcol{background:rgba(20,24,31,.92);border-color:rgba(255,255,255,.14);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+body.glass .teamhead{color:#9aa3b0}
+body.glass .person{border-bottom-color:rgba(255,255,255,.1)}
+body.glass .pname{color:#fff}
+body.glass .plines a{color:#eef1f4;border-bottom-color:rgba(255,255,255,.24)}
+body.glass .plines a:hover{border-bottom-color:var(--cut)}
+body.glass .plines .plabel{color:#c3cad3}
 
 /* map block */
 body.glass .mapblock{
