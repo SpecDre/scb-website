@@ -210,9 +210,10 @@ body.glass .slideshow .slides{border-color:rgba(255,255,255,.14)}
 .slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .45s ease;
   display:grid;place-items:center;pointer-events:none}
 .slide.is-active{opacity:1;z-index:1;pointer-events:auto}
-/* contain = whole photo shown, letterboxed on the dark frame; no awkward crops
-   across the mix of portrait and landscape shots */
-.slide img,.slide video{width:100%;height:100%;object-fit:contain;display:block}
+/* cover = each slide fills the 16:10 frame edge to edge, no dark bars. Portrait
+   shots crop top/bottom; object-position is tuned per slide below so the subject
+   stays in frame. */
+.slide img,.slide video{width:100%;height:100%;object-fit:cover;display:block}
 @media (prefers-reduced-motion:reduce){.slide{transition:none}}
 
 .ss-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;
