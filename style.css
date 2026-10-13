@@ -202,6 +202,35 @@ section{padding:84px 0}
   font-weight:600;display:block;letter-spacing:.02em}
 .projects .meta span{font-size:.88rem;color:var(--steel);display:block;margin-top:6px}
 
+/* ---------- FEATURED JOB SLIDESHOW ---------- */
+.slideshow{position:relative}
+.slideshow .slides{position:relative;aspect-ratio:16/10;background:#0f1217;
+  border:1px solid var(--line);overflow:hidden}
+body.glass .slideshow .slides{border-color:rgba(255,255,255,.14)}
+.slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .45s ease;
+  display:grid;place-items:center;pointer-events:none}
+.slide.is-active{opacity:1;z-index:1;pointer-events:auto}
+/* contain = whole photo shown, letterboxed on the dark frame; no awkward crops
+   across the mix of portrait and landscape shots */
+.slide img,.slide video{width:100%;height:100%;object-fit:contain;display:block}
+@media (prefers-reduced-motion:reduce){.slide{transition:none}}
+
+.ss-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:50px;height:50px;border:0;cursor:pointer;background:rgba(12,14,18,.55);
+  color:#fff;font-family:var(--body);font-size:2rem;line-height:1;display:grid;place-items:center}
+.ss-nav:hover{background:var(--cut)}
+.ss-prev{left:0}.ss-next{right:0}
+.ss-count{position:absolute;bottom:12px;right:14px;z-index:3;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:#fff;
+  background:rgba(12,14,18,.6);padding:4px 9px}
+.ss-dots{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:16px}
+.ss-dots button{width:9px;height:9px;border-radius:50%;border:0;padding:0;cursor:pointer;
+  background:var(--line)}
+.ss-dots button.is-active{background:var(--cut)}
+body.glass .ss-dots button{background:rgba(255,255,255,.32)}
+body.glass .ss-dots button.is-active{background:var(--cut)}
+@media(max-width:560px){.ss-nav{width:42px;height:42px;font-size:1.6rem}}
+
 /* ---------- TESTIMONIALS ---------- */
 .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
 .quotes blockquote{background:var(--paper);border:1px solid var(--line);padding:30px 28px;position:relative}

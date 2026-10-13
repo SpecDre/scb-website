@@ -79,6 +79,63 @@
 
 <main id="main">
 
+<!-- ================= FEATURED JOB — SLIDESHOW =================
+     A self-contained carousel for one job. The video and stills live in
+     video/ and photos/mission-la/. To feature a different job later, swap the
+     slides inside .slides — the JS adapts to however many there are. -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Featured job</p>
+      <h2>Warehouse wall openings — Los Angeles</h2>
+      <p>
+        Saw-cut openings for new access through an existing warehouse — layout, the cut,
+        and the wall panel pushed out in one piece, then hauled off with our own equipment.
+      </p>
+    </div>
+
+    <div class="slideshow" data-slideshow aria-roledescription="carousel" aria-label="Warehouse wall openings job">
+      <div class="slides">
+        <figure class="slide is-active">
+          <video controls preload="metadata" playsinline src="video/wall-opening-cut-out.mp4"></video>
+        </figure>
+        <figure class="slide">
+          <img src="photos/mission-la/01-bobcat-sunflare.jpg" loading="lazy"
+            alt="Bobcat S740 skid steer parked outside the warehouse beside a pile of cut concrete, sun flare overhead">
+        </figure>
+        <figure class="slide">
+          <img src="photos/mission-la/02-bobcat-alley.jpg" loading="lazy"
+            alt="Bobcat skid steer working the alley beside the warehouse with broken concrete piled up">
+        </figure>
+        <figure class="slide">
+          <img src="photos/mission-la/03-wall-opening.jpg" loading="lazy"
+            alt="Finished opening cut through the warehouse wall with the removed concrete panel on a dolly out front">
+        </figure>
+        <figure class="slide">
+          <img src="photos/mission-la/04-crew-panel.jpg" loading="lazy"
+            alt="Crew member beside the Bobcat and the cut wall panel next to a fresh opening">
+        </figure>
+        <figure class="slide">
+          <img src="photos/mission-la/05-pedestrian-opening.jpg" loading="lazy"
+            alt="New pedestrian opening cut through the warehouse wall, cut panel broken out on the ground">
+        </figure>
+        <figure class="slide">
+          <img src="photos/mission-la/06-site-wide.jpg" loading="lazy"
+            alt="Wide view of the warehouse with the Bobcat and cut concrete out front">
+        </figure>
+        <figure class="slide">
+          <img src="photos/mission-la/07-interior-layout.jpg" loading="lazy"
+            alt="Interior warehouse wall marked out and prepped for cutting with plastic containment">
+        </figure>
+      </div>
+      <button class="ss-nav ss-prev" type="button" aria-label="Previous slide">&#8249;</button>
+      <button class="ss-nav ss-next" type="button" aria-label="Next slide">&#8250;</button>
+      <div class="ss-count"><span class="ss-i">1</span>&nbsp;/&nbsp;<span class="ss-n">8</span></div>
+      <div class="ss-dots" role="tablist" aria-label="Choose slide"></div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
 
@@ -123,29 +180,6 @@
           <div class="tag">Demolition · Equipment</div>
           <strong>Two machines, one slab</strong>
           <span>Skid steers working in tandem to break and clear the footprint.</span>
-        </div>
-      </div>
-
-      <!-- WALL OPENINGS -->
-      <div class="card">
-        <div class="shot">
-          <img src="photos/la-warehouse-wall-opening.jpg" width="1600" height="1000" loading="lazy"
-            alt="Rectangular opening cut through a warehouse wall with the removed concrete panel on a dolly out front">
-        </div>
-        <div class="meta">
-          <div class="tag">Wall sawing</div>
-          <strong>Wall opening</strong>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="shot">
-          <img src="photos/la-warehouse-dock-opening.jpg" width="1600" height="1000" loading="lazy"
-            alt="Large dock-height opening cut through a warehouse wall with the cut panel broken out on the ground">
-        </div>
-        <div class="meta">
-          <div class="tag">Wall sawing</div>
-          <strong>Dock-height opening</strong>
         </div>
       </div>
 
@@ -384,6 +418,82 @@ document.querySelector('.navtoggle').addEventListener('click', function(){
   var open = links.classList.toggle('open');
   this.setAttribute('aria-expanded', open);
 });
+
+/* Featured-job slideshow — crossfade carousel with arrows, dots, keyboard and
+   swipe. Auto-advances every 5s, but pauses on hover and stops for good once
+   the visitor plays the video or navigates by hand. Adapts to any slide count. */
+(function(){
+  var root = document.querySelector('[data-slideshow]');
+  if (!root) return;
+  var slides = [].slice.call(root.querySelectorAll('.slide'));
+  if (!slides.length) return;
+  var dotsWrap = root.querySelector('.ss-dots');
+  var iEl = root.querySelector('.ss-i');
+  var nEl = root.querySelector('.ss-n');
+  var i = 0, timer = null, stopped = false;
+
+  if (nEl) nEl.textContent = slides.length;
+
+  slides.forEach(function(s, idx){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', 'Slide ' + (idx + 1));
+    b.addEventListener('click', function(){ stopAuto(); go(idx); });
+    dotsWrap.appendChild(b);
+  });
+  var dots = [].slice.call(dotsWrap.children);
+
+  function render(){
+    slides.forEach(function(s, idx){
+      s.classList.toggle('is-active', idx === i);
+      var v = s.querySelector('video');
+      if (v && idx !== i) { try { v.pause(); } catch(e){} }
+    });
+    dots.forEach(function(d, idx){ d.classList.toggle('is-active', idx === i); });
+    if (iEl) iEl.textContent = i + 1;
+  }
+  function go(n){ i = (n + slides.length) % slides.length; render(); }
+  function next(){ go(i + 1); }
+  function prev(){ go(i - 1); }
+
+  root.querySelector('.ss-next').addEventListener('click', function(){ stopAuto(); next(); });
+  root.querySelector('.ss-prev').addEventListener('click', function(){ stopAuto(); prev(); });
+
+  function tick(){
+    var v = slides[i].querySelector('video');
+    if (v && !v.paused && !v.ended) return; // don't interrupt a playing clip
+    next();
+  }
+  function startAuto(){ if (stopped) return; clearInterval(timer); timer = setInterval(tick, 5000); }
+  function stopAuto(){ stopped = true; clearInterval(timer); }
+
+  root.addEventListener('mouseenter', function(){ clearInterval(timer); });
+  root.addEventListener('mouseleave', function(){ if (!stopped) startAuto(); });
+  slides.forEach(function(s){
+    var v = s.querySelector('video');
+    if (v) v.addEventListener('play', stopAuto);
+  });
+
+  root.setAttribute('tabindex', '0');
+  root.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight'){ stopAuto(); next(); }
+    else if (e.key === 'ArrowLeft'){ stopAuto(); prev(); }
+  });
+
+  var x0 = null;
+  root.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+  root.addEventListener('touchend', function(e){
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40){ stopAuto(); dx < 0 ? next() : prev(); }
+    x0 = null;
+  });
+
+  render();
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) startAuto();
+})();
 </script>
 <!-- Vercel Web Analytics — page views, visitors, top pages, referrers.
      Cookie-free, so no consent banner. Collects only once Web Analytics
