@@ -1,5 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/christmas",
+      "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfTvd0sh_43lqACt80qF_TjuojafnU3t1AhcHENFVCdcq0kew/viewform",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)\\.html",
